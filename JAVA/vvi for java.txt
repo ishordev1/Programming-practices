@@ -4,7 +4,7 @@ child-> @JsonbackReference
 
 
 2. Cascade Use-> parents me jo activity perform hoga ohi child me hoga.
-parents -> cascade=cascadeType.All
+parents ->   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 
 3. pathvariable and requestParam
 @pathvariable use for featch value from -> /id               ex: (@Pathvariable int id)
