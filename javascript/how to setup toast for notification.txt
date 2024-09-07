@@ -1,0 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer } from 'react-toastify';
+
+
+
+add the toast container where the access all the file.
+   <ToastContainer />
+
+more changees go in official website. toast notification. 
