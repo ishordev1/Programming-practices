@@ -1,0 +1,6 @@
+npm create vite@latest
+name of project
+select rect
+select javascript
+
+npm install i
