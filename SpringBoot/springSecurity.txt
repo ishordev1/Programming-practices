@@ -1,0 +1,126 @@
+If you implements UserDetails in User class then overRide all method.
+if not then also direct override all method in CustomUserDetailsService class.
+
+____________________________________________________________________________________________________________________
+In CustomUserDetailsService implements UserDetailsService. and override loadUserByUserName.
+in loadUserbyUserName method use UserRepo to load use from database also create method in userRepo findByEmail.
+
+example without implements userDetails in User class.
+____________________________________________________________________________________________________________
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+	@Autowired
+UserRepository userRepo;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = this.userRepo.findByEmail(username);
+		if(user==null) {
+			throw new ResourceNotFound("user not found");
+		}
+		 List<GrantedAuthority> authorities = new ArrayList<>();
+		    authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole())); // if role then pass otherwise pass empty list.
+		return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),authorities);
+	}
+
+}
+
+_____________________________________________________________________________________________
+if in User you implements UserDetails then direct return user. 
+because if you implements userDetails interface then also user class become UserDetails so direct return.
+------------------------------------------------------------------------------------
+	User user = this.userRepo.findByEmail(username);
+		if(user==null) {
+			throw new ResourceNotFound("user not found");
+		}
+return user;
+
+________________________________________________________________________________________________
+   In MyConfig
+_________________________________________________________________________________________________________
+
+
+@EnableWebSecurity
+@Configuration
+public class MyConfig {
+
+	@Autowired
+	CustomUserDetailsService customUserDetailsService;
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncorder() {
+		return new BCryptPasswordEncoder();
+	}
+//this is Used to configure custom userDetails.
+	@Bean
+	public AuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		daoAuthenticationProvider.setUserDetailsService(customUserDetailsService);
+		daoAuthenticationProvider.setPasswordEncoder(passwordEncorder());
+		return daoAuthenticationProvider;
+	}
+
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests(
+				authorize -> authorize.requestMatchers("/test").authenticated().anyRequest().permitAll()).csrf()
+				.disable();
+
+		return http.build();
+	}
+
+
+// if authenticationManager not use then manually configure in controller when login user. 
+//this is simple direct use this method to verify user are valid or not
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+		return config.getAuthenticationManager();
+	}
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+In Controller using authenticationManager
+-----------------------------------------------------------------------------------------------------------
+@Autowired
+AuthenticationManager authenticationManager;
+
+@PostMapping("/login")
+	    public ResponseEntity<String> login(@RequestBody Login authRequest) throws AuthenticationException {
+	        Authentication authentication = authenticationManager.authenticate(
+			    new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword())
+			);		
+			return ResponseEntity.ok("Login successful!");
+	    }
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+In Controller without authenticationManager
+-----------------------------------------------------------------------------------------------------------
+@Autowired
+CustomeUserDetailsService customeUserDetailsService
+
+
+	@PostMapping("/login")
+	public ResponseEntity<User> login(@RequestBody Login data){
+		Authentication authentication=authenticate(data.getEmail(),data.getPassword());
+//		System.out.println("this si user:"+ authentication.getPrincipal());
+		System.out.println(authentication.getName());
+		User user = this.userRepository.findByEmail(authentication.getName());
+		return new ResponseEntity<>(user,HttpStatus.OK);
+	}
+	
+	private Authentication authenticate(String username, String password) {
+		UserDetails userDetails=this.customeUserDetailsService.loadUserByUsername(username);
+		if(userDetails==null) {
+			throw new BadCredentialsException("invalid user and password");
+		}
+		if(!passwordEncorder.matches(password, userDetails.getPassword())) {
+			throw new BadCredentialsException("invalid password");
+		}
+		return new UsernamePasswordAuthenticationToken(userDetails,null,null);
+	}
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
