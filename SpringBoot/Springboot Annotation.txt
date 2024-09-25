@@ -1,2 +1,4 @@
 @component
 when this annotation used then not need to create object, spring containerautomaticly create object in run time and we direct autowire and use.
+
+
