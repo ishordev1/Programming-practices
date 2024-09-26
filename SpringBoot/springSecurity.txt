@@ -25,6 +25,17 @@ UserRepository userRepo;
 
 }
 
+
+----------
+without role
+------------------------
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User dbUser = userRepo.findByEmail(username).orElseThrow(()-> new ResourceNotFoundException("user not found"));
+		List<GrantedAuthority> auth=new ArrayList<>();
+		
+		return new org.springframework.security.core.userdetails.User(dbUser.getEmail(),dbUser.getPassword(),auth);
+	}
+
 _____________________________________________________________________________________________
 if in User you implements UserDetails then direct return user. 
 because if you implements userDetails interface then also user class become UserDetails so direct return.
