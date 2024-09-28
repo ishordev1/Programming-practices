@@ -1,6 +1,8 @@
 download Docker fil
-enable hypervisor plateform -> search turn on window feature
+enable hypervisor plateform -> search--> turn on window feature
 1. check window window hypervisor plateform and also
 2. window subsystem for linux
+
 and restart system
 
+Now ready your system to Install to Docker
