@@ -1,0 +1,31 @@
+
+1. docker pull imageName-> ex: docker pull openjdk
+
+2. Run file
+docker run containerId
+-> run in Detch mode
+docker run -d containerId
+-> Run in detch and intractive mode
+docker run -d -it containerId
+-> Run and rename containerName
+docker run -d --name containerRenameName -it containerId
+
+3. Show image is running or not
+docker ps
+-> show all running and stop cotainer
+docker ps -a
+
+4. Go inside running  container
+docker exec -it containerId COMMANDNAME
+
+5. Container Stop
+docker stop containerId
+
+6. Remove container
+docker rm containerId
+
+7. To Come out From running container
+ctrl +D or exit()
+
+
+
