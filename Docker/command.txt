@@ -30,5 +30,10 @@ docker rm containerId
 7. To Come out From running container
 ctrl +D or exit()
 
+docker compose start
+docker-compose up
+
+#docker compose stop
+docker-compose down
 
 
