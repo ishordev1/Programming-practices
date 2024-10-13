@@ -12,16 +12,19 @@ docker run -d --name containerRenameName -it containerId
 
 3. Show image is running or not
 docker ps
--> show all running and stop cotainer
+-> Show all running and stop the container
 docker ps -a
 
-4. Go inside running  container
+4. Go inside the running  container
 docker exec -it containerId COMMANDNAME
 
 5. Container Stop
 docker stop containerId
 
-6. Remove container
+#Remove Image
+docker rmi imageId
+
+# Remove container
 docker rm containerId
 
 7. To Come out From running container
