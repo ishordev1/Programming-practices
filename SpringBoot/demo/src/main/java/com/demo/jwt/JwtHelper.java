@@ -24,10 +24,6 @@ public class JwtHelper {
        return getClaimFromToken(token, "subject");
    }
 
-   // Retrieve expiration date from JWT token
-   public Date getExpirationDateFromToken(String token) {
-       return (Date) getClaimFromToken(token, "expiration");
-   }
 
    // Retrieve any claim from the token
    public Object getClaimFromToken(String token, String claimKey) {
@@ -44,6 +40,11 @@ public class JwtHelper {
    private Boolean isTokenExpired(String token) {
        final Date expiration = getExpirationDateFromToken(token);
        return expiration.before(new Date());
+   }
+
+      // Retrieve expiration date from JWT token
+   public Date getExpirationDateFromToken(String token) {
+       return (Date) getClaimFromToken(token, "expiration");
    }
 
    // Generate token for user
