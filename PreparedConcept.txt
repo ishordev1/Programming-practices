@@ -1,0 +1,14 @@
+DSA leetcode
+swagger
+auth2
+payment intigration
+Gemni Ai use
+Web scraping  jsoup, 
+
+
+improve 
+java 8
+jwt
+pagination 
+crossorigin allow frontend 
+email service 
