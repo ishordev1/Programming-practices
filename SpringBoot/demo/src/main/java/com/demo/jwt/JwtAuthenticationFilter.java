@@ -73,7 +73,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
 
-        //
+        //why check SecurityContextHolder.getContext().getAuthentication() == null because if i use multiple filter than it ensure that authentication set only one time. when we are multiple filter then may be it make dublicate so it is avoid that.
+
+//but when we use only one filter then not need to check but it is good practices
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
 
