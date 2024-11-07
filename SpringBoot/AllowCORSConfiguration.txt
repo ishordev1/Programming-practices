@@ -1,0 +1,44 @@
+Method 1.
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+
+//this is use for frontend url allow 
+		@Bean
+	    public FilterRegistrationBean coresFilter() {
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        CorsConfiguration corsConfiguration = new CorsConfiguration();
+	        corsConfiguration.setAllowCredentials(true);
+	        corsConfiguration.addAllowedOriginPattern("*");
+	        corsConfiguration.addAllowedHeader("Authorization");
+	        corsConfiguration.addAllowedHeader("Content-Type");
+	        corsConfiguration.addAllowedHeader("Accept");
+	        corsConfiguration.addAllowedMethod("POST");
+	        corsConfiguration.addAllowedMethod("GET");
+	        corsConfiguration.addAllowedMethod("DELETE");
+	        corsConfiguration.addAllowedMethod("PUT");
+	        corsConfiguration.addAllowedMethod("OPTIONS");
+	        corsConfiguration.setMaxAge(3600L);
+
+	        source.registerCorsConfiguration("/**", corsConfiguration);
+	        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new CorsFilter(source));
+	        filterRegistrationBean.setOrder(-110);
+	        return filterRegistrationBean;
+	    }
+	//	
+
+
+2. Method two
+@Bean
+	public WebMvcConfigurer corsConfigure() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+				.allowedOrigins("http://localhost:5173")
+				.allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
+				.allowedHeaders("*")
+				.allowCredentials(true);
+			}
+		};
+	}
