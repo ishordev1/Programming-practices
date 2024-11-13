@@ -11,8 +11,8 @@ parents ->   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemov
 @RequestParm use featch value from key -> /user?id=2332      ex:( @RequestParam("id") int id)
 
  
-
-
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //only field attribute write not fetch that field data.
+ 
 
 
 
