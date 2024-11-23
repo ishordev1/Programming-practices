@@ -5,7 +5,7 @@ select rect
 select javascript
 
 npx create-react-app appname
-npm install axios,router,react-router-dom@6
+npm install axios,react-router-dom
 
 <BrowserRouter>
 <App/>
