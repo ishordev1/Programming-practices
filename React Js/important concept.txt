@@ -1,6 +1,15 @@
 npm create vite@latest
+
 name of project
 select rect
 select javascript
+
+npx create-react-app appname
+npm install axios,router,react-router-dom@6
+
+<BrowserRouter>
+<App/>
+</BrowserRouter>
+
 
 npm install i
