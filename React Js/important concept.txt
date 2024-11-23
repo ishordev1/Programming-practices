@@ -1,15 +1,18 @@
+#Create React App.
 npm create vite@latest
-
 name of project
 select rect
 select javascript
-
-npx create-react-app appname
 npm install axios,react-router-dom
 
-<BrowserRouter>
-<App/>
-</BrowserRouter>
+#Setup Routes
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+   <BrowserRouter>
+<Routes>
+<Route path='/' element={<Home/>}/>
+</Routes>
+    </BrowserRouter>
+
 
 
 npm install i
