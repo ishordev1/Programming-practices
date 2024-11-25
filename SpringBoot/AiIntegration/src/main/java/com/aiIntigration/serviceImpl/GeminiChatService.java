@@ -15,7 +15,7 @@ public class GeminiChatService {
 	//url -> https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=api key
 	
 public String chat(String prompt) {
-	final String API_KEY="AIzaSyA0szrrHRMcNY60GzsE1HaQn-OC_hnFX1E";
+	final String API_KEY="APIKEY HERE";
 	final String URL="https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=";
 	
 	HttpHeaders header=new HttpHeaders();
