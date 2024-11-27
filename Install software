@@ -1,0 +1,5 @@
+lombok install 
+->download jar file
+->open cmd in the lombok file where is the lombok is downloaded.
+type in cmd->java -jar lombok.jar
+or java -jar tab to get suggestion of fileName.
