@@ -1,0 +1,21 @@
+lombok install 
+->download jar file
+->open cmd in the lombok file where is the lombok is downloaded.
+type in cmd->java -jar lombok.jar
+or java -jar tab to get suggestion of fileName.
+
+
+vscde-> setting-> right side in top  corner "open setting json file-> past this code
+
+ "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+
+example:
+{
+    "workbench.editor.empty.hint": "hidden",
+    "editor.stickyScroll.enabled": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+}
