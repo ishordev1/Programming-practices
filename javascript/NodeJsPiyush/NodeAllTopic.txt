@@ -1,0 +1,68 @@
+1. NPM (Node Package Manager):
+   - Package Management
+   - Dependency Management
+   - Publishing Packages
+
+2. Modules:
+   - Built-in Modules
+   - Creating Custom Modules
+   - Module Exports and Imports
+
+3. File System:
+   - Reading Files
+   - Writing Files
+   - Updating Files
+   - Deleting Files
+
+4. Asynchronous Programming:
+   - Callbacks
+   - Promises
+   - Async/Await     sync-> blocking request 
+
+5. HTTP:
+   - Creating Web Servers
+   - Handling Requests and Responses
+   - Building RESTful APIs
+
+6. Events:
+   - Event Emitters
+   - Event Listeners
+
+7. Streams:
+   - Readable Streams
+   - Writable Streams
+   - Duplex Streams
+   - Transform Streams
+
+8. Buffers:
+   - Binary Data Handling
+
+9. Express.js (Web Framework):
+   - Middleware
+   - Routing
+   - Template Engines
+
+10. Database Interaction:
+    - MongoDB
+    - MySQL
+    - PostgreSQL
+    - SQLite
+
+11. Security:
+    - Authentication
+    - Authorization
+    - Data Encryption
+
+12. Networking:
+    - TCP Servers
+    - UDP Servers
+    - Networking Clients
+
+13. Child Processes:
+    - Executing Shell Commands
+    - Spawning Processes
+
+14. Utilities:
+    - Path Handling
+    - URL Parsing
+    - Date Formatting
