@@ -1,0 +1,15 @@
+check log of mongoDB error
+c drive-> program-> mongoDB-> 8.0.8-> log
+
+if mongodb not connect then first make file in C drive  data. under data also make another file db.
+-> data->db
+
+after open cmd.
+check version
+-> mongod --version
+
+switch path 
+mongod --dbpath C:\data\db
+
+
+
