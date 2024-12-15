@@ -1,0 +1,24 @@
+1. create database
+-> use databaseName
+Create datase but not show until one collection is not created.
+
+2. Create Collection
+-> db.createCollection("User")
+
+3. Show Collections
+-> show collections
+
+4. show database
+-> show dbs
+
+5. insert into collection
+-> db.user.insert({"name":"ishor"})
+Also help direct create collection and insert data
+6. UPdate data
+db.student.updateOne(
+  { _id: ObjectId('6759648b20eeecc0e8893bf9') },
+  { $set: { city: "nepal" } }
+)
+
+7. delete data
+db.student.removeOne({ _id: ObjectId('6759649020eeecc0e8893bfa')})
