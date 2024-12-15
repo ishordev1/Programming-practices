@@ -8,7 +8,7 @@ after open cmd.
 check version
 -> mongod --version
 
-switch path 
+manually mongodb server start in this path.
 mongod --dbpath C:\data\db
 
 
