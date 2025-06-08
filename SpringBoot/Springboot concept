@@ -6,8 +6,8 @@ rest controller vs controller
 
 why use Dto?
 -> To make secure the data (password means, import data)  and API Response Formatted (avoid the nested).
+--------------------------------------------------🔁 Many-to-Many Mapping------------------------------------------------
 
-🔁 Many-to-Many Mapping
 -> create extra table  called bridge table.
 ->  to access the the data of Bridge table use  EntityField_EntityField which present in entity.
 
@@ -25,4 +25,12 @@ List<Category> findByProducts_Id(String productId);
 📝 Use underscore _ to access nested ID:
 categories.id → categories_Id
 products.id → products_Id
-
+-----------------------------------------Product unlink from bridge table---------------------------------------------
+public void deleteProduct(String productId) {
+		 Product product = productRepository.findById(productId)
+			        .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+			    // Optional: clear product from categories (to clean join table)
+			    product.getCategories().forEach(cat -> cat.getProduct().remove(product));
+			    productRepository.delete(product);
+	}
+------------------------------------------------------------------------
