@@ -1,9 +1,5 @@
 # Digital Notes Link:
-Here is all my Digital Notes Link:
-
-## Resources
-
-- **Math Notes**: Access my comprehensive math notes here:  
+- **Apptitudes Notes**: Access my comprehensive math notes here:  
   [https://www.notion.so/1c97a697fcd38067be56f90ffcad8296?v=1c97a697fcd3813fa67b000c3cc406c7](https://www.notion.so/1c97a697fcd38067be56f90ffcad8296?v=1c97a697fcd3813fa67b000c3cc406c7)
 
 ## About
