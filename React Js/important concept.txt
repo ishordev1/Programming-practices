@@ -15,4 +15,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
 
-npm install i
+npm install I
+
+
+npm version conflict error
+Error: error:0308010C:digital envelope routines::unsupported
+set in json file script start:
+
+ "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+
