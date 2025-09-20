@@ -1,1 +1,6 @@
-vector img-> image that decreases pixel when zoom.
+vector img-> image that doesnot decreases pixel when zoom.
+
+create text Style-> plugin name-> type Scales-> open plugin choose or edit text size-> generate 
+-> select only text and remove all-> again select that text-> ctrl +R -> rename like -> H$n -> ok this will  remame all that text
+-> again select that text -> plugin -> text style  generator-> ok -> this will you text style
+
