@@ -16,4 +16,38 @@ eg: margin: 2px,auto;
 -------------------------In flex box------
 justify-content  
 align-item  
-----------------
+----------------------------
+
+--------------------Before----------------After---------------------
+Ye CSS pseudo-elements hote hain jo kisi element ke content ke pehle (before) ya baad (after) me automatically content insert karte hain — bina HTML me kuch likhe.
+::before → Element ke starting me content ya decoration add karta hai
+::after → Element ke ending me content ya decoration add karta hai
+
+eg:
+<p class="text">Hello World</p>
+.text::before {
+  content: "👉 ";         
+  color: red;
+}
+.text::after {
+  content: " 👈";        
+  color: blue;
+}
+
+eg: 2
+<h2 class="heading">My Title</h2>
+.heading {
+  position: relative;
+  display: inline-block;
+}
+.heading::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: orange;
+}
+
+
