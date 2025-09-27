@@ -2,3 +2,18 @@ this function used to do arthimatic calculation in CSS property.
 aab ye 100% se 100px ko chhordega jo hamara first div ka height hai aur dushre ko pura height dega.
 
 height: calc(100% - 100px);
+
+
+-------------container center---
+width:
+margin:x,y<-auto;
+eg: margin: 2px,auto;
+
+------------
+ position:absolute;<-- this is not reserved space
+ position:relative;<-- this is reserved space
+
+-------------------------In flex box------
+justify-content  
+align-item  
+----------------
