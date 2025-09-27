@@ -51,3 +51,22 @@ eg: 2
 }
 
 
+-----------------variable declar----------
+----------Global declaration
+:root{
+    --primary-color: rgb(255, 0, 0);
+    --secondary-color: rgb(0, 255, 0);
+    --hover-color: rgb(0, 0, 255);
+}
+.container{
+background-color: var(--primary-color);
+}
+
+----------In Block Declaration
+.container{
+--primary-color: rgb(255, 0, 0);
+background-color: var(--primary-color);
+}
+-----------------------------
+
+
