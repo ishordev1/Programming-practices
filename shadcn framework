@@ -1,0 +1,3 @@
+Difference between Shadcn and Bootstrap framework.
+-> In Bootstrap we can't create any custom componet or edit any component.
+-> In Shadcn we can, like if we create button, then we also add a new variant in that button.
