@@ -1,0 +1,32 @@
+------------------------------------------------------
+How to handle an undefined exception?
+--------------------------------------
+console.log(obj.admin.name);     <- if name not found, then this throws undefine exception
+console.log(obj.admin?.name);    <- if name not found, then this gives undefine value, not throws undefine error.
+
+----------------------------------------
+How to use contextApi?
+-----------------------------------------------
+  "use client";
+import { createContext, useContext, useState } from "react";
+// create context
+export const UserContext = createContext();
+// provider component
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const login = (name) => setUser({ name });
+  const logout = () => setUser(null);
+  return (
+    <UserContext.Provider value={{ user, login, logout }}>    // value has 2 currly bracket because first is for javascript and second is pass object.
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+// ✅ custom hook
+export const useUser = () => useContext(UserContext);
+
+
+
+
+
