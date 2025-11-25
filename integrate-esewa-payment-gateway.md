@@ -1,5 +1,5 @@
 # Integrate eSewa Payment Gateway
-
+res.render('customer/payment-failure'); --> this means customer folder has payment-failure.ejs file
 1. Create an order and redirect to a specific URL, but also send the following data from the server to the frontend:
 - Total price  
 - Order ID  
