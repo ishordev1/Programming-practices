@@ -1,0 +1,56 @@
+npm init -y
+npm install -D tailwindcss@3
+npx tailwindcss init
+tailwind.config.js
+
+
+
+🚀 STEP 3 — Configure tailwind.config.js
+
+Open tailwind.config.js and replace everything with:
+
+module.exports = {
+  content: [
+    "./*.php",
+    "./**/*.php",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+🚀 STEP 4 — Create CSS Structure
+
+Create folders:
+
+src/
+dist/
+
+
+Inside src, create file:
+
+input.css
+
+
+Add inside input.css:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+🚀 STEP 5 — Build Tailwind
+
+Run this:
+
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+
+
+Now it will generate:
+
+dist/output.css
+
+
+Leave this running while developing.
+
