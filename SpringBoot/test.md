@@ -111,6 +111,8 @@ public class AuthBackend implements CommandLineRunner {
             });
     }
 }
+
+## BioDirection Mapping Only need if you Want to get data in to dual side
 ✅ Summary
 
 @JsonManagedReference / @JsonBackReference → Prevent infinite recursion
