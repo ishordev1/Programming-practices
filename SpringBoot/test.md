@@ -45,6 +45,7 @@ Example:
 public User getUser(@RequestParam("id") int id) {
     return userService.getUser(id);
 }
+```
 ## 4. @JoinColumn(nullable = true)
 @JoinColumn(name = "", nullable = true)
 
