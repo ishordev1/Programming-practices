@@ -166,10 +166,6 @@ AuthenticationProvider → Validates user credentials
 AuthenticationManager → Handles authentication process
 
 Two login approaches:
-public static void main(){
-System.out.println("hello");
-}
-
 With AuthenticationManager (recommended)
 
 Manual authentication (custom logic)
