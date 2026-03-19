@@ -6,3 +6,8 @@ when this annotation used then not need to create object, spring containerautoma
 this anotation help, to save full data only if entity has map with 2 or more entity if one entity will fail this is remove all of them even that is save in db.
 like if we store user and address -> if address are save and fail to save user data it will also delete that address so not necessary save dummy data,
 means it is RollBack
+
+
+
+
+3. C
