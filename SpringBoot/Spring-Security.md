@@ -44,8 +44,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                 authorities
         );
     }
-} ```
-
+} 
+```
 ## Without Role
 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
