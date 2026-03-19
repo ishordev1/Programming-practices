@@ -15,11 +15,45 @@ this is help to store imp data when parents is delete.
 ex: if user order somethings-> if user delete we also save his order history so admin can see.
 
 
-
-
+5. CommandLineRunner -> this class run after main method execute, it help to do some query first after software start like role creation, admin,user, etc or admin check. 
+use: by creating @bean or implements
+@SpringBootApplication
+public class AuthBackend implements CommandLineRunner {
+    @Bean
+    public CommandLineRunner commandLineRunner(){
+        return (args)-> {
+            System.out.println("this is bean command line runner");
+        };
+    }
  
 
+  @Override
+    public void run(String... args) throws Exception {
 
+        //we will create some default user role
+        //ADMIN
+        //GUEST
+        roleRepository.findByName("ROLE_"+AppConstants.ADMIN_ROLE).ifPresentOrElse(role->{
+            System.out.println("Admin Role Already Exists: "+role.getName());
+        },()->{
+            Role role=new Role();
+            role.setName("ROLE_"+AppConstants.ADMIN_ROLE);
+            role.setId(UUID.randomUUID());
+            roleRepository.save(role);
+        });
+        roleRepository.findByName("ROLE_"+AppConstants.GUEST_ROLE).ifPresentOrElse(role->{
+            System.out.println("Guest Role Already Exists: "+role.getName());
+        },()->{
+            Role role=new Role();
+            role.setName("ROLE_"+AppConstants.GUEST_ROLE);
+            role.setId(UUID.randomUUID());
+            roleRepository.save(role);
+
+        });
+
+
+
+    }
 
 
 
