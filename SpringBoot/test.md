@@ -22,7 +22,7 @@ cascade = CascadeType.ALL → All operations (save, delete, update) will be appl
 
 orphanRemoval = true → If the child is removed from the parent, it will be deleted from the database.
 
-3. @PathVariable vs @RequestParam
+## 3. @PathVariable vs @RequestParam
 @PathVariable
 
 Used to fetch values from the URL path.
@@ -45,7 +45,7 @@ Example:
 public User getUser(@RequestParam("id") int id) {
     return userService.getUser(id);
 }
-4. @JoinColumn(nullable = true)
+## 4. @JoinColumn(nullable = true)
 @JoinColumn(name = "", nullable = true)
 
 nullable = true means the foreign key can store NULL values.
@@ -60,7 +60,7 @@ Order → Still exists (foreign key becomes NULL)
 
 This helps admins view past data even if the parent entity is removed.
 
-5. CommandLineRunner
+## 5. CommandLineRunner
 
 CommandLineRunner runs automatically after the main method executes.
 It is useful for initializing data when the application starts.
