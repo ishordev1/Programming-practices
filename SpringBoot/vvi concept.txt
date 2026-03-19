@@ -10,6 +10,13 @@ parents ->   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemov
 @pathvariable use for featch value from -> /id               ex: (@Pathvariable int id)
 @RequestParm use featch value from key -> /user?id=2332      ex:( @RequestParam("id") int id)
 
+4. JoinColumn(name="", nullable=true)   <- nullable true means when also store null in foreign key.
+this is help to store imp data when parents is delete. 
+ex: if user order somethings-> if user delete we also save his order history so admin can see.
+
+
+
+
  
 
 
