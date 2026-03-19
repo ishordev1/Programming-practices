@@ -170,35 +170,3 @@ With AuthenticationManager (recommended)
 
 Manual authentication (custom logic)
 
-
-
-6. Controller (Without AuthenticationManager)
-@Autowired
-CustomUserDetailsService customeUserDetailsService;
-
-@PostMapping("/login")
-public ResponseEntity<User> login(@RequestBody Login data) {
-
-    Authentication authentication = authenticate(data.getEmail(), data.getPassword());
-
-    System.out.println(authentication.getName());
-
-    User user = this.userRepository.findByEmail(authentication.getName());
-
-    return new ResponseEntity<>(user, HttpStatus.OK);
-}
-
-private Authentication authenticate(String username, String password) {
-
-    UserDetails userDetails = this.customeUserDetailsService.loadUserByUsername(username);
-
-    if (userDetails == null) {
-        throw new BadCredentialsException("invalid user and password");
-    }
-
-    if (!passwordEncorder.matches(password, userDetails.getPassword())) {
-        throw new BadCredentialsException("invalid password");
-    }
-
-    return new UsernamePasswordAuthenticationToken(userDetails, null, null);
-}
