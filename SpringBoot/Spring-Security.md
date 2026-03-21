@@ -1,4 +1,7 @@
 # Spring Security Notes
+## Spring Security Follow
+#login senario
+#request come-> controller-> securityFilterChain -> if url public -> usernamepasswordAuthenticationtoken object create-> pass into authenticationManager -> authentication use authenticationProvider internally (not need to create object new version manager auto handle) -> authenticationProvider use UserDetailsService interface which we implement with customuserDetailsService (loaduserbyusername method)
 
 ## 1. UserDetails Implementation
 
