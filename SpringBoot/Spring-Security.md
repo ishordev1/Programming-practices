@@ -1,7 +1,7 @@
 # Spring Security Notes
 ## Spring Security Follow
 #login senario
-#request come-> controller-> securityFilterChain -> if url public -> usernamepasswordAuthenticationtoken object create-> pass into authenticationManager -> authentication use authenticationProvider internally (not need to create object new version manager auto handle) -> authenticationProvider use UserDetailsService interface which we implement with customuserDetailsService (loaduserbyusername method)
+#request come-> controller-> securityFilterChain -> if url public -> usernamepasswordAuthenticationtoken object create-> pass into authenticationManager -> authenticationmanager use authenticationProvider internally (not need to create object new version manager auto handle)  -> authenticationProvider use UserDetailsService interface which we implement with customuserDetailsService (loaduserbyusername method) in AuthenticationProvider has DaoAuthenticationProvider method which take original user data which come from loadUserByUsername and form data DaoAuthenticationProvider compare internally and return authenticate data.
 
 
 ## 1. UserDetails Implementation
