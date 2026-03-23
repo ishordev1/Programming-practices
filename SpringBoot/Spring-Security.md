@@ -3,6 +3,7 @@
 #login senario
 #request come-> controller-> securityFilterChain -> if url public -> usernamepasswordAuthenticationtoken object create-> pass into authenticationManager -> authentication use authenticationProvider internally (not need to create object new version manager auto handle) -> authenticationProvider use UserDetailsService interface which we implement with customuserDetailsService (loaduserbyusername method)
 
+
 ## 1. UserDetails Implementation
 
 - If your `User` class **implements `UserDetails`**, then you must override all methods of the `UserDetails` interface inside the `User` class.
@@ -173,3 +174,34 @@ With AuthenticationManager (recommended)
 
 Manual authentication (custom logic)
 
+
+
+
+## JWT Authentication
+#3 dependency
+1. this is interface which has all method only
+ <dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.11.5</version>
+</dependency>
+
+2. this is interface class where all method are override (core logic).
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-impl</artifactId>
+    <version>0.11.5</version>
+</dependency>
+
+3. jwt deal with json, this class convert that header (Algorithm & Token Type), paylod (User Data (Claims)), and signature(Security/Validation)  into JSON format. Simple all authentication credentials in JSON format when creating jwt authentication sending time
+   when request come jackson will convert that request into again in object
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-jackson</artifactId>
+    <version>0.11.5</version>
+</dependency>
+
+class
+1. JwtAuthenticatinEntryPoint
+2. JwtAuthenticationFilter
+3. JwtHelper
