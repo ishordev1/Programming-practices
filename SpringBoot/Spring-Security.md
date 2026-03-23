@@ -210,7 +210,8 @@ class
 
 3. JwtHelper
 
-   Tool box first open tool box with 
+   like first open tool box with secreat key (unlock system) .build() means system ready to work, 
+   parseClaimsJwt take token and convert into object and return.
    ```
     Claims getClaimsFromToken(String token) {
 		return  Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();	
