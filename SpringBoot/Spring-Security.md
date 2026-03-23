@@ -210,10 +210,38 @@ class
 
 3. JwtHelper
 
-   like first open tool box with secreat key (unlock system) .build() means system ready to work, 
+   like first open tool box (parseBilder() (kholna))  with secret key (unlock system) .build() means system ready to work, 
    parseClaimsJwt take token and convert into object and return.
    ```
     Claims getClaimsFromToken(String token) {
 		return  Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();	
 	}
+```
+
+
+ye check karta hai ki kya expire date avi date se badh ki date hai, (if yes then return true)
+```
+ public  boolean validateToken(String token,UserDetails userDetails) {
+  	if(getUsernameFromToken(token).equals(userDetails.getUsername())) {
+
+  		if(getAllClaims(token).getExpiration().after(new Date())) {
+  	
+  			return true;
+  		}
+  	}
+  	return false;
+  }
+```
+
+parserBuild -> kholna
+build -> Banana (create)
+
+``` public String generateToken(UserDetails userDetails) {
+  	return Jwts.builder().setSubject(userDetails.getUsername())
+  			.setIssuedAt(new Date(System.currentTimeMillis()))
+  			.setExpiration(new Date(System.currentTimeMillis()+5*60*60*1000))
+  			.signWith(key, SignatureAlgorithm.HS512)
+  			.compact();
+  }
+
 ```
