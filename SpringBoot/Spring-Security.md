@@ -186,15 +186,15 @@ Manual authentication (custom logic)
     <version>0.11.5</version>
 </dependency>
 
-2. this is interface class where all method are override (core logic).
+2. this is interface class where all method are overridden (core logic).
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-impl</artifactId>
     <version>0.11.5</version>
 </dependency>
 
-3. jwt deal with json, this class convert that header (Algorithm & Token Type), paylod (User Data (Claims)), and signature(Security/Validation)  into JSON format. Simple all authentication credentials in JSON format when creating jwt authentication sending time
-   when request come jackson will convert that request into again in object
+3. jwt deal with JSON. This class converts that header (Algorithm & Token Type), payload (User Data (Claims)), and signature(Security/Validation)  into JSON format. Simple all authentication credentials in JSON format when creating JWT authentication, sending time
+   when request come jackson will convert that request into an object again.
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-jackson</artifactId>
@@ -202,6 +202,17 @@ Manual authentication (custom logic)
 </dependency>
 
 class
-1. JwtAuthenticatinEntryPoint
-2. JwtAuthenticationFilter
+1. JwtAuthenticationEntryPoint -> show message when an exception come.
+2. JwtAuthenticationFilter -> fetch data from the header set into the securityContextHolder
+3. JwtHelper  -> actual core logic
+
+
+
 3. JwtHelper
+
+   Tool box first open tool box with 
+   ```
+    Claims getClaimsFromToken(String token) {
+		return  Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();	
+	}
+```
