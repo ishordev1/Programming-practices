@@ -1,27 +1,45 @@
-# Spring Boot & JPA Quick Reference
+# Spring Boot Development Notes 🚀
 
-### Spring Modules & Concepts
-* **Spring Security**: Build authentication and authorization with JWT tokens.
-* **IOC (Inversion of Control)**: It has 3 main responsibilities:
-    1. Create objects.
-    2. Management of object lifecycle.
-    3. Dependency Injection.
-* **RestController vs Controller**: 
-    * `@Controller` is used for traditional web pages (MVC).
-    * `@RestController` is used for RESTful web services (JSON/XML).
-
-### Data Transfer Object (DTO)
-**Why use DTO?**
-* To secure sensitive data (e.g., hiding passwords or internal import data).
-* To format API responses properly (avoiding deep nesting or infinite loops).
+Summary of key Spring modules, architectures, and database relationship handling.
 
 ---
 
-### 🔁 Many-to-Many Mapping
-* Creates an extra table called a **Bridge Table** (Join Table).
-* To access the data of the Bridge table, use the `EntityField_PropertyName` pattern.
+## 🍃 Spring Framework Core Concepts
 
-#### ✅ In Entity
+### 1. Inversion of Control (IoC)
+IoC ek fundamental concept hai jahan control (object creation aur management ka) programmer se framework (Spring Container) ko transfer ho jata hai.
+**IoC ke 3 main kaam hote hain:**
+* **Object Creation**: Objects (Beans) ko instantiate karna.
+* **Management**: Objects ki lifecycle ko manage karna.
+* **Dependency Injection (DI)**: Ek object ki dependencies ko doosre object mein inject karna.
+
+
+
+### 2. @RestController vs @Controller
+| Feature | @Controller | @RestController |
+| :--- | :--- | :--- |
+| **Response** | Usually used for Web Pages (View Resolver). | Used for REST APIs (JSON/XML). |
+| **Annotation** | Requires `@ResponseBody` on methods. | `@Controller` + `@ResponseBody` combined. |
+
+### 3. Why use DTO (Data Transfer Object)?
+* **Data Security**: Sensitive data (jaise passwords) ko API response se hide karne ke liye.
+* **Formatted Response**: API response ko clean rakhne aur unnecessary nesting (avoiding infinite loops) se bachne ke liye.
+* **Decoupling**: Entity structure aur API contract ko alag rakhne ke liye.
+
+---
+
+## 🔐 Spring Security & JWT
+Building secure authentication using JSON Web Tokens.
+* **Authentication**: User identity verify karna.
+* **Authorization**: User permissions check karna.
+* **JWT Filter**: Har request ke header se token validate karna.
+
+---
+
+## 🔄 Many-to-Many Mapping
+Many-to-Many relationship mein ek **Bridge Table** (Join Table) create hoti hai.
+
+### ✅ Entity Implementation
 ```java
 @ManyToMany
 @JoinTable(
@@ -29,42 +47,58 @@
     joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id")
 )
-```
 List<Category> categories;
+
+
+```
+
+
+
 🧪 Accessing Data with Spring Data JPA
+Bridge table ke data ko access karne ke liye EntityField_PropertyName pattern use hota hai.
+
 From ProductRepo: List<Product> findByCategories_Id(String categoryId);
 
 From CategoryRepo: List<Category> findByProducts_Id(String productId);
 
-📝 Note: Use an underscore _ to access nested IDs: categories.id → categories_Id.
+📝 Note: Nested ID access karne ke liye underscore _ ka use karein (e.g., categories_Id).
 
------------------ Product unlink from bridge table -----------------
+🔗 Product Unlink from Bridge Table
+Delete karne se pehle relationships ko clear karna zaroori hai taaki bridge table clean rahe.
+
 Java
 public void deleteProduct(String productId) {
     Product product = productRepository.findById(productId)
             .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
-
-    // Optional: clear product from categories (to clean join table)
+            
+    // Clear relationships to clean join table
     product.getCategories().forEach(cat -> cat.getProducts().remove(product));
     
     productRepository.delete(product);
 }
-👨‍👩‍👧 OneToMany (Parents) and ManyToOne (Child)
-1. ManyToOne (Standard Approach) - No Extra Table
-Jab aap @ManyToOne use karte hain, toh Hibernate extra table nahi banata. Iski jagah, child table (jaise products) mein ek Foreign Key column add ho jata hai jo parent table (categories ya subcategories) ko point karta hai.
+
+👨‍👩‍👧 One-to-Many (Parent) & Many-to-One (Child)
+1. Many-to-One (Standard Approach) - No Extra Table
+Hibernate extra table nahi banata. Child table mein ek Foreign Key column add ho jata hai.
 
 Java
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = "subcategory_id")
 private Subcategory subcategory;
-2. OneToMany (Unidirectional) - Extra Table (Join Table)
-Agar aap sirf @OneToMany use karte hain parent entity mein aur child mein @ManyToOne nahi lagate (Unidirectional), toh Hibernate default mein ek Join Table bana deta hai.
-
-Reason: Kyunki Hibernate ko nahi pata ki child table mein column kahan add karna hai, isliye wo ek link table create karta hai.
+2. One-to-Many (Unidirectional) - Extra Table
+Agar child mein @ManyToOne nahi hai, toh Hibernate default mein ek Join Table bana deta hai kyunki use nahi pata hota ki column kahan add karna hai.
 
 3. Bidirectional Mapping (Best Practice)
-mappedBy use karne se extra table nahi banti.
+mappedBy ka use karke extra table banne se roka jata hai.
 
 Java
 @OneToMany(mappedBy = "category")
 private List<Product> products = new ArrayList<>();
+
+
+
+
+
+
+
+
