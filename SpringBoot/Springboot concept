@@ -34,3 +34,22 @@ public void deleteProduct(String productId) {
 			    productRepository.delete(product);
 	}
 ------------------------------------------------------------------------
+
+OneToMany (Parents) and ManyToOne(Child)
+
+1. ManyToOne (Standard Approach) - No Extra Table
+Jab aap @ManyToOne use karte hain, toh Hibernate extra table nahi banata. 
+Iski jagah, child table (jaise products) mein ek Foreign Key column add ho jata hai jo parent table (jaise categories) ko point karta hai.
+@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory_id")
+    private Subcategory subcategory;
+
+2. OneToMany (Unidirectional) - Extra Table (Join Table)
+Agar aap sirf @OneToMany use karte hain parent entity mein aur child mein @ManyToOne nahi lagate (Unidirectional),
+toh Hibernate default mein ek Join Table bana deta hai.
+
+  Kyu? Kyunki Hibernate ko nahi pata ki child table mein column kahan add karna hai, isliye wo ek link table bana deta hai.
+
+ @OneToMany(mappedBy = "category")
+    private List<Product> products = new ArrayList<>();
+
