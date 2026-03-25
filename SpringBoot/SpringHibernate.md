@@ -77,7 +77,7 @@ public void deleteProduct(String productId) {
     productRepository.delete(product);
 }
 
-👨‍👩‍👧 One-to-Many (Parent) & Many-to-One (Child)
+# 👨‍👩‍👧 One-to-Many (Parent) & Many-to-One (Child)
 1. Many-to-One (Standard Approach) - No Extra Table
 Hibernate extra table nahi banata. Child table mein ek Foreign Key column add ho jata hai.
 
@@ -85,10 +85,10 @@ Java
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = "subcategory_id")
 private Subcategory subcategory;
-2. One-to-Many (Unidirectional) - Extra Table
+# 2. One-to-Many (Unidirectional) - Extra Table
 Agar child mein @ManyToOne nahi hai, toh Hibernate default mein ek Join Table bana deta hai kyunki use nahi pata hota ki column kahan add karna hai.
 
-3. Bidirectional Mapping (Best Practice)
+# 3. Bidirectional Mapping (Best Practice)
 mappedBy ka use karke extra table banne se roka jata hai.
 
 Java
