@@ -29,6 +29,7 @@
     joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id")
 )
+```
 List<Category> categories;
 🧪 Accessing Data with Spring Data JPA
 From ProductRepo: List<Product> findByCategories_Id(String categoryId);
