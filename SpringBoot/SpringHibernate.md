@@ -80,6 +80,7 @@ public void deleteProduct(String productId) {
 # 👨‍👩‍👧 One-to-Many (Parent) & Many-to-One (Child)
 1. Many-to-One (Standard Approach) - No Extra Table
 Hibernate extra table nahi banata. Child table mein ek Foreign Key column add ho jata hai.
+default behavour: lazyloading
 
 Java
 @ManyToOne(fetch = FetchType.LAZY)
