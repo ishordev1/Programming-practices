@@ -53,3 +53,11 @@ toh Hibernate default mein ek Join Table bana deta hai.
  @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();
 
+
+why initilize empty object in entity? why not direct variable initiate and work?
+with initilize      -------> private List<Product> products = new ArrayList<>();
+without initilize   -------> private List<Product> products;
+
+if initilize - --> because in serviceImpl direct we can work without initilize everytime if adding new product.
+if not ----> one by one initilize and do operation
+
