@@ -97,7 +97,15 @@ Java
 private List<Product> products = new ArrayList<>();
 
 
+## orphanRemoval = true
+1. orphanRemoval = true Ka Matlab Kya Hai?
+Iska simple matlab hai: "Agar koi Child apne Parent se alag (disconnect) ho gaya, toh use database se delete kar do."
 
+Jab aap Product ki images ki list mein se kisi ek image ko remove karte hain, toh woh "Orphan" (anaath) ban jati hai kyunki uska ab koi parent product nahi raha.
+
+Default (orphanRemoval = false): Hibernate sirf foreign key ko NULL kar dega, lekin image ki row database mein padi rahegi (Garbage data).
+
+With orphanRemoval = true: Hibernate turant us image ki row ko database se DELETE kar dega.
 
 
 
