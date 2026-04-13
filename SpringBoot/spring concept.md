@@ -184,9 +184,20 @@ public class PaymentController {
 Kal ko agar aapko PayPal add karna hai, toh aapko Controller ya Factory ko touch karne ki zaroorat nahi hai. Bas ek nayi PaypalPaymentServiceImpl class banaiye aur Factory mein ek line add kar dijiye.Environment Specific Beans: Aap @Profile("dev") ya @Profile("prod") use karke bhi beans switch kar sakte hain. Jaise Dev mode mein MockPaymentService aur Prod mein RealStripeService.Conditional Loading: Aap @ConditionalOnProperty use kar sakte hain. Maan lijiye aapne application.properties mein likha payment.gateway=paytm, toh Spring sirf Paytm wali bean banayega, doosri ko memory mein load hi nahi karega.Comparison: Direct Class vs Factory StrategyFeatureDirect Class (No Interface)Interface StrategyNew Payment MethodController mein bada switch-case likhna padega.Bas ek nayi class add karni hai.MemorySaara logic hamesha load rehta hai.Sirf required implementation active rehti hai.TestingHar gateway ke liye alag controller test chahiye.Ek hi test case saare gateways ke liye kaam karega.
 
 
-# If want to save also child when save parents then must link with that child entity, not dto. 
+# If want to save also child also when save parents then must link with that child entity,and that child link with parents
 👉 Save parent + child together using one .save()
+// 1. Parent create kiya
+Parents p = new Parents();
 
+// 2. Child create kiya aur usme parent set kiya
+Child c1 = new Child();
+c1.setParents(p); 
+
+// 3. Parent ki list mein child dala (Takki JPA ko list mil sake)
+p.getChildren().add(c1);
+
+// 4. Ab sirf parent save karo, child apne aap ho jayega
+parentRepository.save(p); 
 Example:
 
 Product → Variant → Image
@@ -201,6 +212,8 @@ child.setParent(parent);        // REQUIRED (DB)
 parent.getChildren().add(child); // REQUIRED (Java memory)
 ✅ Rule 3: Save only parent
 parentRepository.save(parent);
+
+
 
 
 
