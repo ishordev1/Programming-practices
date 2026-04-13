@@ -131,7 +131,8 @@ CommandLineRunner → Runs code at application startup
 
 
 # Why we use service instant of serviceImpl why not direct use serviceimpl?
-## 1. The Interface (Common Contract)Sabse pehle hum ek generic interface banate hain. Controller ko sirf isi se matlab hai:Javapublic interface PaymentService {
+## 1. The Interface (Common Contract)Sabse pehle hum ek generic interface banate hain. Controller ko sirf isi se matlab hai:
+ public interface PaymentService {
     String processPayment(double amount);
 }
 ## 2. Multiple ImplementationsAb hum do alag-alag logic likhte hain. Dono same interface ko follow karenge:Java@Service("paytmService") // Humne iska ek specific naam de diya
@@ -149,7 +150,8 @@ public class StripePaymentServiceImpl implements PaymentService {
         return "Processing $" + amount + " via Stripe (Global Gateway)";
     }
 }
-## 3. Deep Concept: Runtime Selection Kaise Hoti Hai?Agar aap direct @Autowired karenge, toh Spring confuse ho jayega ki kaunsi wali use karni hai (isko NoUniqueBeanDefinitionException kehte hain).Isko solve karne ke liye hum PaymentFactory ya Registry pattern use karte hain:Method A: Using Map Injection (The Smart Way)Spring Boot ki ek bahut cool quality hai—agar aap ek Map mein interface inject karte hain, toh Spring saari implementations ko us map mein bhar deta hai (Bean name as key).Java@Service
+## 3. Deep Concept:
+Runtime Selection Kaise Hoti Hai?Agar aap direct @Autowired karenge, toh Spring confuse ho jayega ki kaunsi wali use karni hai (isko NoUniqueBeanDefinitionException kehte hain).Isko solve karne ke liye hum PaymentFactory ya Registry pattern use karte hain:Method A: Using Map Injection (The Smart Way)Spring Boot ki ek bahut cool quality hai—agar aap ek Map mein interface inject karte hain, toh Spring saari implementations ko us map mein bhar deta hai (Bean name as key).Java@Service
 public class PaymentFactory {
 
     // Spring automatically saari PaymentService ki beans is map mein daal dega
@@ -177,11 +179,27 @@ public class PaymentController {
         return service.processPayment(amount);
     }
 }
-##  5. Deep Benefits (Kyun ye "Deep" hai?)Open-Closed Principle (SOLID): Kal ko agar aapko PayPal add karna hai, toh aapko Controller ya Factory ko touch karne ki zaroorat nahi hai. Bas ek nayi PaypalPaymentServiceImpl class banaiye aur Factory mein ek line add kar dijiye.Environment Specific Beans: Aap @Profile("dev") ya @Profile("prod") use karke bhi beans switch kar sakte hain. Jaise Dev mode mein MockPaymentService aur Prod mein RealStripeService.Conditional Loading: Aap @ConditionalOnProperty use kar sakte hain. Maan lijiye aapne application.properties mein likha payment.gateway=paytm, toh Spring sirf Paytm wali bean banayega, doosri ko memory mein load hi nahi karega.Comparison: Direct Class vs Factory StrategyFeatureDirect Class (No Interface)Interface StrategyNew Payment MethodController mein bada switch-case likhna padega.Bas ek nayi class add karni hai.MemorySaara logic hamesha load rehta hai.Sirf required implementation active rehti hai.TestingHar gateway ke liye alag controller test chahiye.Ek hi test case saare gateways ke liye kaam karega.
+##  5. Deep Benefits (Kyun ye "Deep" hai?)Open-Closed Principle (SOLID):
+Kal ko agar aapko PayPal add karna hai, toh aapko Controller ya Factory ko touch karne ki zaroorat nahi hai. Bas ek nayi PaypalPaymentServiceImpl class banaiye aur Factory mein ek line add kar dijiye.Environment Specific Beans: Aap @Profile("dev") ya @Profile("prod") use karke bhi beans switch kar sakte hain. Jaise Dev mode mein MockPaymentService aur Prod mein RealStripeService.Conditional Loading: Aap @ConditionalOnProperty use kar sakte hain. Maan lijiye aapne application.properties mein likha payment.gateway=paytm, toh Spring sirf Paytm wali bean banayega, doosri ko memory mein load hi nahi karega.Comparison: Direct Class vs Factory StrategyFeatureDirect Class (No Interface)Interface StrategyNew Payment MethodController mein bada switch-case likhna padega.Bas ek nayi class add karni hai.MemorySaara logic hamesha load rehta hai.Sirf required implementation active rehti hai.TestingHar gateway ke liye alag controller test chahiye.Ek hi test case saare gateways ke liye kaam karega.
 
 
 # If want to save also child when save parents then must link with that child entity, not dto. 
+👉 Save parent + child together using one .save()
 
+Example:
+
+Product → Variant → Image
+🔑 Core Rules (REMEMBER THESE)
+✅ Rule 1: Use Cascade
+@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+
+👉 Allows saving child automatically
+
+✅ Rule 2: Set relationship BOTH sides
+child.setParent(parent);        // REQUIRED (DB)
+parent.getChildren().add(child); // REQUIRED (Java memory)
+✅ Rule 3: Save only parent
+parentRepository.save(parent);
 
 
 
