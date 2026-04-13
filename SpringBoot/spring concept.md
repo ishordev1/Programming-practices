@@ -136,6 +136,7 @@ CommandLineRunner → Runs code at application startup
     String processPayment(double amount);
 }
 ## 2. Multiple ImplementationsAb hum do alag-alag logic likhte hain. Dono same interface ko follow karenge:Java@Service("paytmService") // Humne iska ek specific naam de diya
+
 public class PaytmPaymentServiceImpl implements PaymentService {
     @Override
     public String processPayment(double amount) {
