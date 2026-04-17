@@ -125,6 +125,12 @@ function test(name:String,age:number):number{
 return age;
 }
 
+
+function test2(age:number,addresss:string):void{
+log(age)
+}
+
+
 ```
 # Union
 ```
@@ -155,5 +161,27 @@ return userId;
 displayUserId(userId);
 
 ```
+
+# Optional ?
+If we dontknow value then write ? is this call optional which is any value
+```
+function test(roll :string?):number?{
+return "kumar"
+}
+```
+
+# Type Alias
+same like sql we can change name of anythings temporary
+
+```
+ex:
+type xyz string;
+let address: xyz = "Mumbai";
+console.log(typeof address);
+```
+
+
+
+
 
 
