@@ -26,25 +26,30 @@ console.log(value.toUpperCase);
 } else {
 console.log(value.toFixed(2));
 });
-
+```
 
 # Null Undefine Any
 ## null value   <-- obsese of value
+```
 eg:  let userName=null
 log(typeof userName);
 log(userName)
+```
 
 ## undefine <-- when a variable is initialized, but not value given or not variable
+```
 eg: let userName;
 log(userName)
+```
 
 # null and undefine is falsey value
+```
 it alway trigger false statement
 if(username) log("true)
 else log("false")
 
 output: false
-
+```
 
 ## any <--- any value 
 let product:any={
