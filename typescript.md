@@ -20,11 +20,13 @@ run that generated js file: node filename.js
 now when save ts file, it auto-compiles that ts file and that js is linked with html and html is running live server, it give output
 
 # typeof
+`
 if (typeof value == "string") {
 console.log(value.toUpperCase);
 } else {
 console.log(value.toFixed(2));
 });
+`
 
 # Null Undefine Any
 ## null value   <-- obsese of value
