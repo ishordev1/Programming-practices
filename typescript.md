@@ -52,17 +52,19 @@ output: false
 ```
 
 ## any <--- any value 
+```
 let product:any={
 productName:"book"
 price:324,
 }
 log(product.productName)
 log(product.isActive)
-
+```
 
 
 
 # Array
+```
 let arrayName: type[];
 eg: let mynumber:number[]=[2,4,6,7,3,6,7]
 let friendsName:string[]=["kumar","ram","shyam"]
@@ -86,8 +88,10 @@ log(index , name);
 return name.toUpperCase();
 });
 log(uppercaseName)
+```
 
 # Object
+```
 //only store can't access
 let student:object={
 name:'ram',
@@ -107,9 +111,11 @@ address:'india',
 log(student)
  log(student.name) 
 
-
+```
 
 # function
+```
+
 function funName(variable:datatype):returnType{
 //statement
 }
@@ -119,27 +125,9 @@ function test(name:String,age:number):number{
 return age;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 # Union
-
+```
 let mixed: (string | number) [ ] ;
 mixed = ["one", "two", "three", 23, 35];
 mixed.forEach((value) => {
@@ -166,6 +154,6 @@ return userId;
 }
 displayUserId(userId);
 
-
+```
 
 
