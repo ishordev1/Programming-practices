@@ -9,11 +9,13 @@ tsc filename.extension
 run that generated js file: node filename.js
 
 
-# Save time when compile and run types code
+# Setup when save ts file it give output in browser
 1. compile the ts code
 2. create one html page
 3. link that compiled js in that html code with script tag
 4. Run with live server
 5. now it will show output in browser console direct when compile ts file
+6. tsc filename.ts --watch <-- It auto compile ts file when save
 
+now when save ts file, it auto-compiles that ts file and that js is linked with html and html is running live server, it give output
 
