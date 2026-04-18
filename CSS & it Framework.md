@@ -4,7 +4,7 @@ aab ye 100% se 100px ko chhordega jo hamara first div ka height hai aur dushre k
 height: calc(100% - 100px);
 
 
--------------container center---
+container cente
 width:
 margin:x,y<-auto;
 eg: margin: 2px,auto;
@@ -13,7 +13,7 @@ eg: margin: 2px,auto;
  position:absolute;<-- this is not reserved space
  position:relative;<-- this is reserved space
 
--------------------------In flex box------
+In flex box
 justify-content  
 align-item  
 ----------------------------
