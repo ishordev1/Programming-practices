@@ -70,6 +70,29 @@ background-color: var(--primary-color);
 -----------------------------
 
 
+# Tailwind css
+```
+tags
+16px -> 1rem
+border-> border
+h1 -> text-lx font-bold
+box shadow -> showdow-sm ,md,lx,lg
+width  --> w-full, 1/2    also made self give 
+
+
+
+color goes 50-950 max
+
+
+
+```
+
+
+
+
+
+
+
 ------------------------------------------------------------------------ShadCN Start------------------------------------------------------------------------------------
 
 
