@@ -1,4 +1,38 @@
+# JS concept
+
 # map function
 data.map((obj,idx)=>(
 //statement
 ))
+
+--------------------------------------------------------------------------------------------------------
+# React Js
+------------------------------------------------------------------------------------------------------------------
+
+
+#Create React App.
+npm create vite@latest
+name of project
+select rect
+select javascript
+npm install axios,react-router-dom
+
+#Setup Routes
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+   <BrowserRouter>
+<Routes>
+<Route path='/' element={<Home/>}/>
+</Routes>
+    </BrowserRouter>
+
+
+
+npm install I
+
+
+npm version conflict error
+Error: error:0308010C:digital envelope routines::unsupported
+set in json file script start:
+
+ "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+
