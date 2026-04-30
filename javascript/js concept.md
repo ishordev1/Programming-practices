@@ -10,7 +10,7 @@ data.map((obj,idx)=>(
 ------------------------------------------------------------------------------------------------------------------
 
 
-#Create React App.
+# Create React App.
 npm create vite@latest
 name of project
 select rect
@@ -18,6 +18,7 @@ select javascript
 npm install axios,react-router-dom
 
 #Setup Routes
+```
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
    <BrowserRouter>
 <Routes>
@@ -25,7 +26,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 </Routes>
     </BrowserRouter>
 
-
+```
 
 npm install I
 
