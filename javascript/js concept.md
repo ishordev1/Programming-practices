@@ -1,6 +1,6 @@
 # JS concept
 
-# map function
+### map function
 data.map((obj,idx)=>(
 //statement
 ))
