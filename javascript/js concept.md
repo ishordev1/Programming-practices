@@ -12,6 +12,22 @@ TypeScript
 TS mein hum interfaces isliye use karte hain kyunki humein sirf "Shape of the Data" define karni hoti hai.Lightweight: Interface JS code mein convert nahi hote, so zero overhead.Flexibility: TS "Structural Typing" use karta hai. Agar object ka structure interface se match karta hai, toh TS khush hai.Easy to Extend: Aap multiple interfaces ko easily merge ya extend kar sakte ho.Difference at a GlanceFeatureInterface (TS)Class (TS/Java)Runtime PresenceNo (gayab ho jata hai)Yes (exists in JS/JVM)MemoryLightweightHeavy (methods aur logic store hota hai)PurposeData structure define karnaLogic aur Data dono handle karna
    
 
+
+------------------------------------------------------------------------------------
+# ShadCn
+---------------------------------------------------------------------------
+```
+### How implement sidebar in nextjs.
+1. open sidebar install in project.
+2. visit in sidebar block component copy and past all component from there
+
+```
+
+
+
+
+
+
 --------------------------------------------------------------------------------------------------------
 # React Js
 ------------------------------------------------------------------------------------------------------------------
@@ -83,6 +99,16 @@ return (
 
 
 ```
+
+
+
+
+
+
+
+
+
+
 # Hook
 useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
 
