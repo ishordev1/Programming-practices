@@ -16,8 +16,8 @@ TS mein hum interfaces isliye use karte hain kyunki humein sirf "Shape of the Da
 ------------------------------------------------------------------------------------
 # ShadCn
 ---------------------------------------------------------------------------
-```
 ### How implement sidebar in nextjs.
+```
 1. open sidebar install in project.
 2. visit in sidebar block component copy and past all component from there
 
