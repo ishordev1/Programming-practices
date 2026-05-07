@@ -65,6 +65,7 @@ set in json file script start:
 # Next Js
 ----------------------------------------------------------------------------------------------------------------------
 ### React Query (tanstack) setup
+-----------------------
 ```
 1. Add or install Tanstack React Query from Tanstack documentation
 2. Wrap QueryClientProvider with the root file, create ReactQueryProvider, and return QueryClientProvider,
@@ -100,12 +101,51 @@ return (
 
 ```
 
+### How request send using tanstack Get and Post
+
+------------
+i. Get Request
+------------------
 
 
+1. create useQueryClient()
+2. create useQuery  hook in there pass 2 attribute in that object, key & api function. 
+- Key-> this for data cache, another time direct get using this if available otherwise it automatic fetch from db.
+- Function -> this for Api service method so it call api.
 
+```
+//step 1
+ const queryClient = useQueryClient();
+ //step 2
+  const { data: wholesellers } = useQuery({
+    queryKey: ["wholeseller"],
+    queryFn: getWholeseller,
+  });
 
+```
 
+ii. post method
+-----------------------
+1. first create mutation function using useMutation Hook and pass object, in obj there pass api service method, success, and error function.
+2. make submit Handler there call mutation method.
+   
+ ```
+  const sizeMutation = useMutation({
+    mutationFn: createSize,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["sizes"] }); // Automatically refetch   <--------------- using queryClient pass key which set from get request, it will refresh data
+      setNewSizeName("");
+      toast.success("Size added successfully");
+    },
+    onError: () => toast.error("Failed to add size"),
+  });
+  
+  const handleAddSize = () => {
+    if (!newSizeName.trim()) return toast.error("Please enter a size name");
+    sizeMutation.mutate({ name: newSizeName });
+  };
 
+```
 
 
 
