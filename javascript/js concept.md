@@ -9,26 +9,23 @@ data.map((obj,idx)=>(
 TypeScript
 -------------------------------------------------------
 1. why create an interface in TypeScript why not class?
-TS mein hum interfaces isliye use karte hain kyunki humein sirf "Shape of the Data" define karni hoti hai.Lightweight: Interface JS code mein convert nahi hote, so zero overhead.Flexibility: TS "Structural Typing" use karta hai. Agar object ka structure interface se match karta hai, toh TS khush hai.Easy to Extend: Aap multiple interfaces ko easily merge ya extend kar sakte ho.Difference at a GlanceFeatureInterface (TS)Class (TS/Java)Runtime PresenceNo (gayab ho jata hai)Yes (exists in JS/JVM)MemoryLightweightHeavy (methods aur logic store hota hai)PurposeData structure define karnaLogic aur Data dono handle karna
+- TS mein hum interfaces isliye use karte hain kyunki humein sirf "Shape of the Data" define karni hoti hai. Lightweight: Interface JS code mein convert nahi hote, so zero overhead. Flexibility: TS "Structural Typing" use karta hai. Agar object ka structure interface se match karta hai, toh TS khush hai.Easy to Extend: Aap multiple interfaces ko easily merge ya extend kar sakte ho.Difference at a Glance Feature Interface (TS)Class (TS/Java)Runtime Presence No (gayab ho jata hai)Yes (exists in JS/JVM) Memory Lightweight Heavy (methods aur logic store hota hai) Purpose Data structure define karna Logic aur Data dono handle karna
    
 
 
-------------------------------------------------------------------------------------
 # ShadCn
 ---------------------------------------------------------------------------
 ### How implement sidebar in nextjs.
-```
+
 1. open sidebar install in project.
 2. visit in sidebar block component copy and past all component from there
 
-```
 
 
 
 
 
 
---------------------------------------------------------------------------------------------------------
 # React Js
 ------------------------------------------------------------------------------------------------------------------
 
@@ -61,9 +58,9 @@ set in json file script start:
  "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
 
 
------------------------------------------------------------------------------------------------------------------------
+
 # Next Js
-----------------------------------------------------------------------------------------------------------------------
+---
 ### React Query (tanstack) setup
 -----------------------
 ```
