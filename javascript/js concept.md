@@ -146,6 +146,18 @@ ii. post method
 
 
 
+### React Hook Form
+-----
+
+### Zod validation
+---------
+1. install zod and Resolver, it found in schema section in react hook form docs.
+   - npm install @hookform/resolvers yup
+2. Create Schema,
+   - it also have feature to convert direct schema into interface so not need to create interface direct convert
+
+
+
 # Hook
 useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
 
