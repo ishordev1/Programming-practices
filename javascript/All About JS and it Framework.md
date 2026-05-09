@@ -158,6 +158,65 @@ ii. post method
 
 
 
+
+
+
+# React Hook Form , Zod validation and tanstack query
+--------------------------------
+```
+
+const SizeManagement = () => {
+  const useClient = useQueryClient();
+  const { data: sizes, isLoading } = useQuery({
+    queryKey: ["sizes"],
+    queryFn: getAllSizes,
+  });
+
+
+const {register,handleSubmit,reset,formState:{errors,isSubmitting}}=useForm<SizeRequest>({
+    resolver: zodResolver(SizeRequestSchema),
+})
+
+  const createSizeMutation=useMutation({
+    mutationFn:createSize,
+    onSuccess:()=>{
+        useClient.invalidateQueries({queryKey:["sizes"]})
+        toast.success("create size successfully")
+    },
+    onError:(error:any)=>{
+        toast.error(error.message|| "fail to create size")
+    }
+  })
+
+
+
+
+  return (
+    <>
+      <Card className="w-full  mt-4">
+        <CardHeader>
+          <CardTitle>Size Management</CardTitle>
+          <CardDescription>manage all size </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Separator />
+          <form  onSubmit={handleSubmit((data)=>createSizeMutation.mutate(data))}>
+            <div className="flex items-center mt-4">
+              <Field className="w-[50%]">
+                <FieldLabel htmlFor="size">Enter size Here</FieldLabel>
+                <Input id="size" {...register("name",{required:true})} />
+              {errors.name && (
+                  <span className="text-red-600">This field is required</span>
+                )}
+              </Field>
+              <div className="mt-7 mx-3">
+                <Button>Add Size</Button>
+              </div>
+            </div>
+          </form>
+
+```
+
 # Hook
 useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
 
