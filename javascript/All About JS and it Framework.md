@@ -251,9 +251,10 @@ return <img key={i} src={URL.createObjectURL(c)} width={200} height={200}/>
 })
 }
 </div>
-
    ```
-or using component
+   
+1. or using component
+   
 ```
 function App() {
 const [state, setState] = useState<File[]>([])
@@ -290,7 +291,7 @@ isDragActive ?
 </div>
 </>
 
-
+```
 
 
 
