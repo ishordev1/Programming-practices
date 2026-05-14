@@ -217,6 +217,132 @@ const {register,handleSubmit,reset,formState:{errors,isSubmitting}}=useForm<Size
 
 ```
 
+# React Drop Zone
+1. it is use to upload file
+2. Install it library
+
+   ```
+   
+import { useCallback, useState } from 'react'
+import { useDropzone } from 'react-dropzone'
+function App() {
+const [state, setState] = useState << File []>([])
+const { getRoot Props, getInputProps, isDragActive } = useDropzone({
+onDrop: useCallback((files: any)=>{
+// console.log(files);
+setState(files)
+}, [])
+})
+return (
+<>
+<h1>Hello React DropZone</h1>
+<div className="root-file" {...getRootProps()} >
+<input {...getInputProps()} />
+{
+isDragActive ?
+<p>Drop the files here ...</p> :
+<p>Drag 'n' drop some files here, or click to select files</p>
+}
+</div>
+<div className="">
+{
+state && state.length > 0 && state.map((c,i)=>{
+return <img key={i} src={URL.createObjectURL(c)} width={200} height={200}/>
+})
+}
+</div>
+
+   ```
+or using component
+```
+function App() {
+const [state, setState] = useState<File[]>([])
+return (
+<>
+<h1>Hello React DropZone</h1>
+<DropZoneComponent setState={setState} />
+<div className="">
+{
+state && state.length > 0 && state.map((c,i)=>{
+return <img key={i} src={URL.createObjectURL(c)} width= {200} height={200} alt="" />
+})
+}
+</div>
+</>
+}
+export default App
+ 
+
+Const DropZoneComponent = ({setState):any)=>{
+const onDrop = useCallback((files: any) => {
+console. Log(files);
+setState (files)
+｝，[]）
+const { getRootProps, getInputProps, isDragActive } = useDropzone ((
+onDrop
+return
+<＞
+‹div className="root-file" {...getRootProps()} ›
+‹input {...getInputProps()} /›
+isDragActive ?
+‹p›Drop the files here ...‹/p› :
+‹p›Drag 'n' drop some files here, or click to select files</p>
+</div>
+</>
+
+
+
+
+
+
+# Multi Stepper Form
+```
+const ProductStepper = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [formData, setFormData] = useState({
+    basicInfo: {},
+    variants: [],
+    images: []
+  });
+
+  const steps = ['Basic Details', 'Variants & Stock', 'Images & Media', 'Review'];
+
+  const handleNext = () => setActiveStep((prev) => prev + 1);
+  const handleBack = () => setActiveStep((prev) => prev - 1);
+
+  return (
+    <div className="w-full p-6">
+      {/* Step Indicator */}
+      <div className="flex justify-between mb-8">
+        {steps.map((label, index) => (
+          <div key={label} className={`flex-1 text-center border-b-4 pb-2 ${activeStep >= index ? 'border-blue-600 text-blue-600' : 'border-gray-200'}`}>
+            <span className="font-bold">{index + 1}.</span> {label}
+          </div>
+        ))}
+      </div>
+
+      {/* Dynamic Step Content */}
+      <div className="bg-white p-8 rounded shadow">
+        {activeStep === 0 && <BasicInfoForm data={formData.basicInfo} onUpdate={(val) => setFormData({...formData, basicInfo: val})} />}
+        {activeStep === 1 && <VariantsForm variants={formData.variants} />}
+        {activeStep === 2 && <ImageUploadSection images={formData.images} />}
+        {activeStep === 3 && <ReviewAndSubmit data={formData} />}
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="mt-8 flex justify-between">
+        <button disabled={activeStep === 0} onClick={handleBack} className="px-6 py-2 bg-gray-300 rounded">Back</button>
+        {activeStep === steps.length - 1 ? (
+          <button onClick={finalSubmit} className="px-6 py-2 bg-green-600 text-white rounded">Final Save</button>
+        ) : (
+          <button onClick={handleNext} className="px-6 py-2 bg-blue-600 text-white rounded">Next</button>
+        )}
+      </div>
+    </div>
+  );
+};
+```
+
 # Hook
 useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
 
