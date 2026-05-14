@@ -221,8 +221,7 @@ const {register,handleSubmit,reset,formState:{errors,isSubmitting}}=useForm<Size
 1. it is use to upload file
 2. Install it library
 
-   ```
-   
+```   
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 function App() {
@@ -251,7 +250,7 @@ return <img key={i} src={URL.createObjectURL(c)} width={200} height={200}/>
 })
 }
 </div>
-   ```
+```
    
 1. or using component
    
