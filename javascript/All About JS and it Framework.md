@@ -148,6 +148,33 @@ ii. post method
 
 ### React Hook Form
 -----
+1. useFormContext -> it is use for managing large form
+- create one form provider and wrap all child form in that form.
+- Also create one submit button, when button click it will get all data in one place
+
+  ```
+const page = () => {
+const methods=useForm<Product>()
+ const onSubmit=(data:Product)=>{
+  console.log(`data: ${data}`);
+  
+ }
+  return (
+   <>
+   <FormProvider {...methods}>
+    <form>
+<BasicDetails/>
+  <Button onSubmit={methods.handleSubmit(onSubmit)}>submit</Button>
+    </form>
+
+
+   </FormProvider>
+   </>
+  );
+
+};
+  ```
+
 
 ### Zod validation
 ---------
