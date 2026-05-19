@@ -167,11 +167,9 @@ const methods=useForm<Product>()
   <Button onSubmit={methods.handleSubmit(onSubmit)}>submit</Button>
     </form>
 
-
    </FormProvider>
    </>
   );
-
 };
   ```
 
