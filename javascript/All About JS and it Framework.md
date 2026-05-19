@@ -245,13 +245,14 @@ const {register,handleSubmit,reset,formState:{errors,isSubmitting}}=useForm<Size
 # React Drop Zone
 1. it is use to upload file
 2. Install it library
+3. getRootProps, getInputProps -> this two help to open the form for drag file and handle the file in the form. without this can't open the form for drag
 
 ```   
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 function App() {
 const [state, setState] = useState << File []>([])
-const { getRoot Props, getInputProps, isDragActive } = useDropzone({
+const { getRootProps, getInputProps, isDragActive } = useDropzone({
 onDrop: useCallback((files: any)=>{
 // console.log(files);
 setState(files)
