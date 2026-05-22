@@ -175,6 +175,7 @@ const methods=useForm<Product>()
 
 
 ### Zod validation
+- it is use to validate input fields with a custom method and check in frontend without hitting the backend request.
 ---------
 1. install zod and Resolver, it found in schema section in react hook form docs.
    - npm install @hookform/resolvers yup
