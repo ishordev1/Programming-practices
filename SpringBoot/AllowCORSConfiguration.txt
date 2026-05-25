@@ -41,3 +41,29 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 			}
 		};
 	}
+
+
+
+
+now go in config file and securityFilterChain there  pass 
+.cors(cors->{})
+
+this first fall back and then it auto searchh that webmvccongigure file, if found it will use that.
+this we also direct pass with Customizer, that will direct take not need to fall back.
+
+.cors(Customizer.withDefaults())
+
+ex: 
+@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+	http.csrf(csrf->csrf.disable())
+//	.cors(cors->{}) //this is also work for enabling cors. 
+//	but its working process is different empty lamda fall back then it auto search our webMVCConfigure file then it work
+	.cors(Customizer.withDefaults())
+	.authorizeHttpRequests(auth->auth.requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated())
+	.exceptionHandling(ex->ex.authenticationEntryPoint(this.authenticationEntryPoint))
+	.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+	.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+	return http.build();
+}
