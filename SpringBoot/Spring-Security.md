@@ -214,9 +214,9 @@ class
    parseClaimsJwt take token and convert into object and return.
    ```
     Claims getClaimsFromToken(String token) {
-		return  Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();	
+	return  Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();	
 	}
-```
+	```
 
 
 ye check karta hai ki kya expire date avi date se badh ki date hai, (if yes then return true)
@@ -236,12 +236,85 @@ ye check karta hai ki kya expire date avi date se badh ki date hai, (if yes then
 parserBuild -> kholna
 build -> Banana (create)
 
-``` public String generateToken(UserDetails userDetails) {
-  	return Jwts.builder().setSubject(userDetails.getUsername())
-  			.setIssuedAt(new Date(System.currentTimeMillis()))
-  			.setExpiration(new Date(System.currentTimeMillis()+5*60*60*1000))
-  			.signWith(key, SignatureAlgorithm.HS512)
-  			.compact();
+```
+public String generateToken(UserDetails userDetails) {
+return Jwts.builder().setSubject(userDetails.getUsername())
+.setIssuedAt(new Date(System.currentTimeMillis()))
+.setExpiration(new Date(System.currentTimeMillis()+5*60*60*1000))
+.signWith(key, SignatureAlgorithm.HS512)
+.compact();
   }
 
 ```
+
+-----
+# OAuth2
+-----
+1. create oAuth2 client
+2. client register with  google auth-> get client id, client secret
+   - google developer
+   - create project and select that project
+   - right side click API & Service
+     - credential -> congigure this
+     - OAuth consent screen -> also this
+    
+      1. OAuth Consent screen  configure
+         - click create -> Fill that details
+         - also create client there.
+         -  give backend url and redirect url default: origin: http://localhost:8080, Authorised redirect URIs: http://localhost:8080/login/oauth2/code/google
+ 
+         - data Access - tick what you get from user first 3.
+         - downnload client id and client secret or copy
+
+3. In Springboot add in the .properties file
+   - add that client secret and client id.
+   - name is fix use that
+   - spring.security.oauth2.client.registration.google.client-id=
+   - spring.security.oauth2.client.registration.google.client-secret=
+4. Add the OAuth2 Dependency in the pom.xml file
+5. In the config file in the securityFilterChain method, add the oauth function, etc
+   ```
+   private final AuthenticationSuccessHandler authenticationSuccessHandler;
+   @Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+	http.csrf(csrf->csrf.disable())
+	//	.cors(cors->{}) //this is also work for enabling cors. 
+	//	but its working process is different empty lamda fall back then it auto search our webMVCConfigure file then it work
+	.cors(Customizer.withDefaults())
+	.authorizeHttpRequests(auth->auth.requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated())
+	.exceptionHandling(ex->ex.authenticationEntryPoint(this.authenticationEntryPoint))
+	//add this 
+	.oauth2Login( oauth2 -> 
+	oauth2.successHandler(this.authenticationSuccessHandler)
+	.failureHandler(null)
+
+			)
+
+	.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+	.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+	return http.build();
+	}
+   ```
+6. create file OAuth2 file and implement AuthenticationSuccessHandler method and override method.
+   - In authentication, get all user Data
+   - username, email, etc
+   - Now User that information create new user and token and redirect into frontend
+```
+	
+	@Component
+	public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
+
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+	Authentication authentication) throws IOException, ServletException {
+	response.getWriter().write("Login successful");
+	System.out.println("OAuth2 login successful for user: " + authentication.toString());
+	}
+
+}
+
+```
+
+7. Now in OAuth2SuccessHandler 
+
