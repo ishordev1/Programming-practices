@@ -243,6 +243,19 @@ const {register,handleSubmit,reset,formState:{errors,isSubmitting}}=useForm<Size
 
 ```
 
+# Zustand
+- It is a library same like context api, and the redux toolkit, which manages state automatically.
+- Context API is only used in small applications, and Redux is very complex.
+- Zustand is easy and flexible, and is also used in large projects.
+
+### How to Use Zustand?
+ - Install zustand from the documentation.
+ - create store folder and there create store file. 
+ - create function in that store file using zustand and add the state which you manage on application.
+ - also create function on that zustan function for edit or update of that state.
+ - when ever you want to use or change state, just import zustand store file and bring out that function and store in new variable and work. 
+
+
 # React Drop Zone
 1. it is use to upload file
 2. Install it library
