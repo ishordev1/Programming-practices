@@ -301,8 +301,9 @@ export default function Counter() {
 ```
   ### Persist
   - It is also part of zustand.
-  - It is used to sync state with local storage automatically. So that Not lose value after refreshing the page
-  - 
+  - It is used to sync state with local storage automatically. So that Not lose value after refreshing the page.
+
+  - first pass perist and in call back function, also put name of object for accessing the local storage value.
 ```
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
@@ -311,8 +312,14 @@ export const useBearStore = create()(
   persist(
     (set, get) => ({
       bears: 0,
-      addABear    bears bears   
-
+      addABear: () => set({ bears: get().bears + 1 }),
+    }),
+    {
+      name: 'food-storage', // name of the item in the storage (must be unique)
+      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+    },
+  ),
+)
 
 ```
 
