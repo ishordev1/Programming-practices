@@ -299,6 +299,22 @@ export default function Counter() {
   );
 }
 ```
+  ### Persist
+  - It is also part of zustand.
+  - It is used to sync state with local storage automatically. So that Not lose value after refreshing the page
+  - 
+```
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
+
+export const useBearStore = create()(
+  persist(
+    (set, get) => ({
+      bears: 0,
+      addABear    bears bears   
+
+
+```
 
 # React Drop Zone
 1. it is use to upload file
