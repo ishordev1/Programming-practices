@@ -253,8 +253,52 @@ const {register,handleSubmit,reset,formState:{errors,isSubmitting}}=useForm<Size
  - create store folder and there create store file. 
  - create function in that store file using zustand and add the state which you manage on application.
  - also create function on that zustan function for edit or update of that state.
- - when ever you want to use or change state, just import zustand store file and bring out that function and store in new variable and work. 
+ - when ever you want to use or change state, just import zustand store file and bring out that function and store in new variable and work.
 
+```
+// src/store/useCounterStore.js
+import { create } from 'zustand';
+
+const useCounterStore = create((set) => ({
+  // 1. Initial State
+  count: 0,
+
+  // 2. Actions (State ko update karne ke liye)
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+  reset: () => set({ count: 0 }),
+}));
+
+export default useCounterStore;
+
+```
+```
+// src/components/Counter.jsx
+"use client";
+
+import useCounterStore from "@/store/useCounterStore";
+
+export default function Counter() {
+  // Store se state aur actions ko select karein
+  const count = useCounterStore((state) => state.count);
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
+  const reset = useCounterStore((state) => state.reset);
+
+  return (
+    <div style={{ padding: "20px", border: "1px solid #ccc", borderRadius: "8px" }}>
+      <h2>Counter Component</h2>
+      <h1>Count: {count}</h1>
+      
+      <div style={{ display: "flex", gap: "10px" }}>
+        <button onClick={increment} style={{ padding: "10px" }}>Increment</button>
+        <button onClick={decrement} style={{ padding: "10px" }}>Decrement</button>
+        <button onClick={reset} style={{ padding: "10px", backgroundColor: "red", color: "white" }}>Reset</button>
+      </div>
+    </div>
+  );
+}
+```
 
 # React Drop Zone
 1. it is use to upload file
