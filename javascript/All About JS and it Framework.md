@@ -61,6 +61,15 @@ set in json file script start:
 
 # Next Js
 ---
+### Replace vs Push
+
+- Replace <- //replace not hold back page if go forwared. means user login and user want to go back it is not show singin page
+- push <- it hold previous like user is go product page and then details page and again come in product page it will show.
+  ```
+  import { router } from 'next/router';
+  router.push("/")
+  router.replace("/");
+  ```
 ### React Query (tanstack) setup
 -----------------------
 ```
