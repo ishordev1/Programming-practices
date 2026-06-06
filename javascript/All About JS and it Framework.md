@@ -54,6 +54,19 @@ TypeScript
   <option value="XL" />
   <option value="XXL" />
 </datalist>
+
+
+or
+
+  <Input list="sizes" {...register("size")} />
+
+                <datalist id="sizes">
+                  {sizes?.map((size) => (
+                    <option key={size.id} value={size.name}>
+                      {size.name}
+                    </option>
+                  ))}
+                </datalist>
 ```
 
 
