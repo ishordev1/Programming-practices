@@ -28,6 +28,17 @@ TypeScript
 
 # React Js
 ------------------------------------------------------------------------------------------------------------------
+```
+<select {...register(`variants.${index}.size`)}>
+  <option value="">Select Size</option>
+
+  {sizes.map((size) => (
+    <option key={size.id} value={size.name}>
+      {size.name}
+    </option>
+  ))}
+</select>
+```
 
 
 # Create React App.
