@@ -28,6 +28,8 @@ TypeScript
 
 # React Js
 ------------------------------------------------------------------------------------------------------------------
+### Data show in field
+
 ```
 <select {...register(`variants.${index}.size`)}>
   <option value="">Select Size</option>
@@ -38,6 +40,20 @@ TypeScript
     </option>
   ))}
 </select>
+```
+```
+  <Input
+  list="sizes"
+  {...register("size")}
+/>
+
+<datalist id="sizes">
+  <option value="S" />
+  <option value="M" />
+  <option value="L" />
+  <option value="XL" />
+  <option value="XXL" />
+</datalist>
 ```
 
 
