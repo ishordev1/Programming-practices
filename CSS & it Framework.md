@@ -1,3 +1,7 @@
+# Put Top on div
+ - parents div give relative
+ - child div give absolute
+
 this function used to do arthimatic calculation in CSS property.
 aab ye 100% se 100px ko chhordega jo hamara first div ka height hai aur dushre ko pura height dega.
 
