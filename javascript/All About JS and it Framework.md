@@ -1,5 +1,7 @@
 # JS concept
 
+
+
 ### map function
 data.map((obj,idx)=>(
 //statement
@@ -28,7 +30,18 @@ TypeScript
 
 # React Js
 ------------------------------------------------------------------------------------------------------------------
-### Data show in field
+### Function and CallBack function
+- When you directly put a function in the div, that means call it when the page is rendered (open first time) directly.
+  ```
+  <button onClick={deleteHandler(product.id)}>click</button>
+  ```
+  
+- 
+  ```
+  <button onClick={deleteHandler(product.id)}>click</button>
+  ```
+
+### Data show in the field
 
 ```
 <select {...register(`variants.${index}.size`)}>
