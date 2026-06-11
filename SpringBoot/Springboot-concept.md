@@ -9,7 +9,7 @@
 
  - > create extra table  called bridge table.
 - >  to access the the data of Bridge table use  EntityField_EntityField which present in entity.
-
+```
 ✅ In Entity
 @ManyToMany
 @JoinTable(name = "product_category",
@@ -24,7 +24,10 @@ List<Category> findByProducts_Id(String productId);
 📝 Use underscore _ to access nested ID:
 categories.id → categories_Id
 products.id → products_Id
------------------------------------------Product unlink from bridge table---------------------------------------------
+```
+# Product unlink from bridge table
+
+```
 public void deleteProduct(String productId) {
 		 Product product = productRepository.findById(productId)
 			        .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
@@ -32,6 +35,7 @@ public void deleteProduct(String productId) {
 			    product.getCategories().forEach(cat -> cat.getProduct().remove(product));
 			    productRepository.delete(product);
 	}
+```
 ------------------------------------------------------------------------
 
 OneToMany (Parents) and ManyToOne(Child)
