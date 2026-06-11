@@ -5,10 +5,10 @@
 
 # why use Dto?
 - > To make secure the data (password means, import data)  and API Response Formatted (avoid the nested).
---------------------------------------------------🔁 Many-to-Many Mapping------------------------------------------------
 
- - > create extra table  called bridge table.
-- >  to access the the data of Bridge table use  EntityField_EntityField which present in entity.
+# Many-to-Many Mapping
+- create extra table  called bridge table.
+- to access the the data of Bridge table use  EntityField_EntityField which present in entity.
 ```
 ✅ In Entity
 @ManyToMany
@@ -38,7 +38,7 @@ public void deleteProduct(String productId) {
 ```
 ------------------------------------------------------------------------
 
-OneToMany (Parents) and ManyToOne(Child)
+# OneToMany (Parents) and ManyToOne(Child)
 
 1. ManyToOne (Standard Approach) - No Extra Table
 Jab aap @ManyToOne use karte hain, toh Hibernate extra table nahi banata. 
