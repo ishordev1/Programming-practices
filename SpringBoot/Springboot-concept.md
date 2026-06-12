@@ -87,3 +87,105 @@ if not ----> one by one initilize and do operation
 3. Query → Advanced queries ke liye (group by, order by), filhal ignore karo
 
 
+
+### How to implement Specification in Project
+- just in Repository also extends jpaSpecificationExecutor and pass entity
+  ```
+  public interface ProductRepository extends JpaRepository<Product, String> ,JpaSpecificationExecutor<Product> {
+  }
+  ```
+- create specification package and make SpecificationDto class
+- eg: ProductFilterSpeficicationDto
+- Create method in that class.
+- Only check it null or not and put in list after convert that list into predicate.
+```
+package com.kaivalkids.specification;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jspecify.annotations.Nullable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.util.StringUtils;
+
+import com.kaivalkids.dto.FilterProductByUserDto;
+import com.kaivalkids.dto.ProductFilterByAdminDto;
+import com.kaivalkids.model.Product;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
+public class ProductSpecification {
+
+	public static Specification<Product> filterProductsByAdmin(ProductFilterByAdminDto filter) {
+//root for accessing entity attributes, query for building the query, and cb for constructing predicates.
+//query is use to build the query and can be used for things like ordering or grouping,
+		// while cb is used to create predicates that represent the conditions of the
+		// query.
+//cb is use for conditions like "like", "equal", "greater than", etc.,
+		// which are essential for filtering the results based on the criteria specified
+		// in the filter object.
+
+		return (root, query, cb) -> {
+
+			List<Predicate> predicates = new ArrayList<>();
+			// this means predicates and it will added into the list.
+			if (StringUtils.hasText(filter.getSearch())) {
+				predicates.add(cb.like(cb.lower(root.get("name")), "%" + filter.getSearch().toLowerCase() + "%"));
+			}
+
+			if (filter.getActive() != null) {
+				predicates.add(cb.equal(root.get("isActive"), filter.getActive()));
+			}
+
+			if (StringUtils.hasText(filter.getCategoryId())) {
+				predicates.add(cb.equal(root.get("category").get("id"), filter.getCategoryId()));
+			}
+
+			if (StringUtils.hasText(filter.getSubcategoryId())) {
+				predicates.add(cb.equal(root.get("subcategory").get("id"), filter.getSubcategoryId()));
+			}
+
+			if (StringUtils.hasText(filter.getWholesalerId())) {
+				predicates.add(cb.equal(root.get("wholesaler").get("id"), filter.getWholesalerId()));
+			}
+
+			// cb.and means that all predicate must be true. it auto convert all predicate
+			// with and condition.
+			// return cb.and(predicates.toArray(new Predicate[0])); // Convert list to array
+			// and return the combined predicate
+			//or
+
+			return cb.and(predicates.toArray(new Predicate[predicates.size()])); // toArray is use to convert list of
+																					// predicate to array,
+			// so we pass total size of blank predicate. then to array fill that blank array
+			// to in that predicate
+		};
+	}
+
+
+}
+
+```
+
+- In serviceImple just call that specification method and pass in that repository.
+
+```
+	@Override
+	public PageableResponse<ProductDto> getAllProducts(ProductFilterByAdminDto filter, int pageNumber, int pageSize,
+			String sortBy, String sortDir) {
+
+		Sort sort = sortDir.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+
+		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+
+		Specification<Product> specification = ProductSpecification.filterProductsByAdmin(filter);
+
+		Page<Product> pageProduct = productRepository.findAll(specification, pageable);
+
+		return PageableUtil.getPageableResponse(pageProduct, ProductDto.class);
+	}
+```
+
