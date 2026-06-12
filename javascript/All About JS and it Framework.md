@@ -563,7 +563,12 @@ const categories = [
 
 
 const page = () => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  //when past url in other page it present that filter
+  const searchParams = useSearchParams();
+  const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
+  
+  const [selectedCategories, setSelectedCategories] =useState<string[]>(initialCategories);
+
  useEffect(() => {
     console.log(selectedCategories);
   }, [selectedCategories]);
@@ -574,8 +579,10 @@ const page = () => {
   useEffect(() => {
     const params = new URLSearchParams();
     if (selectedCategories.length > 0) {
+   //url become catNames=name1%cname21%name3
       params.set("catNames", selectedCategories.join(","));
-      // selectedCategories.forEach((cat) => {params.append("catNames", cat)});
+   //url become catNames=name1&catNames=name2
+   // selectedCategories.forEach((cat) => {params.append("catNames", cat)});
     }
     router.replace(`${pathname}?${params.toString()}`);
   }, [selectedCategories]);
