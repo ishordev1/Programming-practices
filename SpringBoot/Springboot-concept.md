@@ -100,7 +100,24 @@ if not ----> one by one initilize and do operation
 - Only check it null or not and put in list after convert that list into predicate.
 - predicates.add(cb.equal(root.get("wholesaler").get("id"), filter.getWholesalerId()));
 - root.get("wholesaler") <-- this wholesaler is entity field 
--  filter.getWholesalerId() <-- this dto which want to compare
+-  filter.getWholesalerId() <-- this dto which want to compare.
+-  if entity have any list variable, first fetch that variable entity using then work
+```
+ Join<Product, ProductAttribute> attributeJoin =
+				            root.join("productAttributes");
+
+				    predicatesList.add(
+				        cb.and(
+				            cb.equal(
+				                cb.lower(attributeJoin.get("name")),
+				                "color"
+				            ),
+				            attributeJoin.get("value")
+				                         .in(filter.getColors())
+				        )
+				    );
+```
+
 ```
 package com.kaivalkids.specification;
 
