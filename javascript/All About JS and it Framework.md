@@ -537,3 +537,72 @@ async function getUserData() {
   
   return res.json();
 }
+
+
+
+
+# filter features
+```
+const categories = [
+  {
+    id: "1",
+    name: "GIRLS Clothing",
+    slug: "girls-clothing",
+  },
+  {
+    id: "2",
+    name: "BOYS Clothing",
+    slug: "boys-clothing",
+  },
+  {
+    id: "3",
+    name: "TOYS",
+    slug: "toys",
+  },
+];
+
+
+const page = () => {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+ useEffect(() => {
+    console.log(selectedCategories);
+  }, [selectedCategories]);
+
+  //put data in browser url
+  const router = useRouter();
+  const pathname = usePathname();
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (selectedCategories.length > 0) {
+      params.set("catNames", selectedCategories.join(","));
+      // selectedCategories.forEach((cat) => {params.append("catNames", cat)});
+    }
+    router.replace(`${pathname}?${params.toString()}`);
+  }, [selectedCategories]);
+
+  const handleCategoryChange = (slug: string, checked: boolean) => {
+    if (checked) {
+      setSelectedCategories((prev) => [...prev, slug]);
+    } else {
+      setSelectedCategories((prev) => prev.filter((item) => item !== slug));
+    }
+  };
+
+
+  return (
+    <>
+      test productPagejson
+      {categories.map((cat) => (
+        <div key={cat.id}>
+          <Checkbox
+            checked={selectedCategories.includes(cat.slug)}
+            onCheckedChange={(checked) =>handleCategoryChange(cat.slug, checked === true)
+ }
+          />
+
+          {cat.name}
+        </div>
+      ))}
+</>
+)
+```
