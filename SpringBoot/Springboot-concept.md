@@ -98,6 +98,9 @@ if not ----> one by one initilize and do operation
 - eg: ProductFilterSpeficicationDto
 - Create method in that class.
 - Only check it null or not and put in list after convert that list into predicate.
+- predicates.add(cb.equal(root.get("wholesaler").get("id"), filter.getWholesalerId()));
+- root.get("wholesaler") <-- this wholesaler is entity field 
+-  filter.getWholesalerId() <-- this dto which want to compare
 ```
 package com.kaivalkids.specification;
 
