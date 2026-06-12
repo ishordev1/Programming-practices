@@ -192,3 +192,59 @@ public class ProductSpecification {
 	}
 ```
 
+
+Case 1: Simple Field
+
+If the field is:
+
+private String brand;
+
+then:
+
+root.get("brand")
+
+✅ Works directly.
+
+Case 2: ManyToOne
+@ManyToOne
+private Category category;
+
+You can do:
+
+root.get("category").get("name")
+
+✅ Usually works.
+
+Example:
+
+root.get("category")
+    .get("id")
+    .in(filter.getCategoryIds());
+Case 3: OneToMany / List
+@OneToMany
+private List<ProductAttribute> productAttributes;
+
+Now:
+
+root.get("productAttributes")
+
+returns a collection.
+
+You cannot do:
+
+root.get("productAttributes")
+    .get("value")
+
+❌ Error / Invalid
+
+Because JPA doesn't know which item in the list you mean.
+
+So you must join:
+
+Join<Product, ProductAttribute> attributeJoin =
+        root.join("productAttributes");
+
+Then:
+
+attributeJoin.get("value")
+
