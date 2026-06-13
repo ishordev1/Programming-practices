@@ -113,6 +113,183 @@ set in json file script start:
 
 
 # Next Js
+
+# Hook
+1. useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
+   ```
+   const searchParams = useSearchParams();
+   eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
+   const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
+   ```
+
+3. URLSearchParams: Yeh ek helper hai jo naya URL string Likhta/Modify karta hai. (Jaise: Purane filters mein 'Sort' bhi add kar do).
+
+4. router.push: Yeh naye URL par Navigate karta hai. (Jaise: Naya link apply kar do).
+   ```
+  //put data in browser url
+  const router = useRouter();
+  const pathname = usePathname();
+   ```
+5. full example
+``
+export default function Page() {
+  const searchParams = useSearchParams();
+
+  const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
+
+  const initialSubCategories =
+    searchParams.get("subcatNames")?.split(",") ?? [];
+
+  const [selectedCategories, setSelectedCategories] =
+    useState<string[]>(initialCategories);
+
+  const [selectedSubCategories, setSelectedSubCategories] =
+    useState<string[]>(initialSubCategories);
+
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Update URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    if (selectedCategories.length > 0) {
+      params.set("catNames", selectedCategories.join(","));
+    }
+
+    if (selectedSubCategories.length > 0) {
+      params.set("subcatNames", selectedSubCategories.join(","));
+    }
+
+    router.replace(`${pathname}?${params.toString()}`);
+  }, [selectedCategories, selectedSubCategories, pathname, router]);
+
+  //   // TanStack Query
+  //   const { data, isLoading } = useQuery({
+  //     queryKey: [
+  //       "products",
+  //       selectedCategories,
+  //       selectedSubCategories,
+  //     ],
+
+  //     queryFn: () =>
+  //       getProducts({
+  //         catNames: selectedCategories,
+  //         subcatNames: selectedSubCategories,
+  //       }),
+  //   });
+
+  const handleCategoryChange = (slug: string, checked: boolean) => {
+    if (checked) {
+      setSelectedCategories((prev) => [...prev, slug]);
+    } else {
+      setSelectedCategories((prev) => prev.filter((item) => item !== slug));
+    }
+  };
+
+  const handleSubCategoryChange = (slug: string, checked: boolean) => {
+    if (checked) {
+      setSelectedSubCategories((prev) => [...prev, slug]);
+    } else {
+      setSelectedSubCategories((prev) => prev.filter((item) => item !== slug));
+    }
+  };
+
+```
+
+
+# _debouncedSubmit()
+
+```
+
+// app/dashboard/page.tsx
+async function getUserData() {
+  const res = await fetch('https://api.your-springboot.com/user/profile', {
+    // Isse Next.js server par data cache NAHI karega
+    cache: 'no-store', 
+    headers: {
+      'Authorization': 'Bearer YOUR_TOKEN'
+    }
+  });
+  
+  return res.json();
+}
+```
+
+
+# filter features
+```
+const categories = [
+  {
+    id: "1",
+    name: "GIRLS Clothing",
+    slug: "girls-clothing",
+  },
+  {
+    id: "2",
+    name: "BOYS Clothing",
+    slug: "boys-clothing",
+  },
+  {
+    id: "3",
+    name: "TOYS",
+    slug: "toys",
+  },
+];
+
+
+const page = () => {
+  //when past url in other page it present that filter
+  const searchParams = useSearchParams();
+  const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
+  
+  const [selectedCategories, setSelectedCategories] =useState<string[]>(initialCategories);
+
+ useEffect(() => {
+    console.log(selectedCategories);
+  }, [selectedCategories]);
+
+  //put data in browser url
+  const router = useRouter();
+  const pathname = usePathname();
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (selectedCategories.length > 0) {
+   //url become catNames=name1%cname21%name3
+      params.set("catNames", selectedCategories.join(","));
+   //url become catNames=name1&catNames=name2
+   // selectedCategories.forEach((cat) => {params.append("catNames", cat)});
+    }
+    router.replace(`${pathname}?${params.toString()}`);
+  }, [selectedCategories]);
+
+  const handleCategoryChange = (slug: string, checked: boolean) => {
+    if (checked) {
+      setSelectedCategories((prev) => [...prev, slug]);
+    } else {
+      setSelectedCategories((prev) => prev.filter((item) => item !== slug));
+    }
+  };
+
+
+  return (
+    <>
+      test productPagejson
+      {categories.map((cat) => (
+        <div key={cat.id}>
+          <Checkbox
+            checked={selectedCategories.includes(cat.slug)}
+            onCheckedChange={(checked) =>handleCategoryChange(cat.slug, checked === true)
+ }
+          />
+
+          {cat.name}
+        </div>
+      ))}
+</>
+)
+```
+
 ---
 ### Replace vs Push
 
@@ -214,7 +391,7 @@ ii. post method
 - create one form provider and wrap all child form in that form.
 - Also create one submit button, when button click it will get all data in one place
 
-  ```
+```
 const page = () => {
 const methods=useForm<Product>()
  const onSubmit=(data:Product)=>{
@@ -233,7 +410,7 @@ const methods=useForm<Product>()
    </>
   );
 };
-  ```
+```
 
 
 ### Zod validation
@@ -512,104 +689,4 @@ const ProductStepper = () => {
 };
 ```
 
-# Hook
-useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
 
-URLSearchParams: Yeh ek helper hai jo naya URL string Likhta/Modify karta hai. (Jaise: Purane filters mein 'Sort' bhi add kar do).
-
-router.push: Yeh naye URL par Navigate karta hai. (Jaise: Naya link apply kar do).
-
-
-
-_debouncedSubmit()
-
-
-
-// app/dashboard/page.tsx
-async function getUserData() {
-  const res = await fetch('https://api.your-springboot.com/user/profile', {
-    // Isse Next.js server par data cache NAHI karega
-    cache: 'no-store', 
-    headers: {
-      'Authorization': 'Bearer YOUR_TOKEN'
-    }
-  });
-  
-  return res.json();
-}
-
-
-
-
-# filter features
-```
-const categories = [
-  {
-    id: "1",
-    name: "GIRLS Clothing",
-    slug: "girls-clothing",
-  },
-  {
-    id: "2",
-    name: "BOYS Clothing",
-    slug: "boys-clothing",
-  },
-  {
-    id: "3",
-    name: "TOYS",
-    slug: "toys",
-  },
-];
-
-
-const page = () => {
-  //when past url in other page it present that filter
-  const searchParams = useSearchParams();
-  const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
-  
-  const [selectedCategories, setSelectedCategories] =useState<string[]>(initialCategories);
-
- useEffect(() => {
-    console.log(selectedCategories);
-  }, [selectedCategories]);
-
-  //put data in browser url
-  const router = useRouter();
-  const pathname = usePathname();
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (selectedCategories.length > 0) {
-   //url become catNames=name1%cname21%name3
-      params.set("catNames", selectedCategories.join(","));
-   //url become catNames=name1&catNames=name2
-   // selectedCategories.forEach((cat) => {params.append("catNames", cat)});
-    }
-    router.replace(`${pathname}?${params.toString()}`);
-  }, [selectedCategories]);
-
-  const handleCategoryChange = (slug: string, checked: boolean) => {
-    if (checked) {
-      setSelectedCategories((prev) => [...prev, slug]);
-    } else {
-      setSelectedCategories((prev) => prev.filter((item) => item !== slug));
-    }
-  };
-
-
-  return (
-    <>
-      test productPagejson
-      {categories.map((cat) => (
-        <div key={cat.id}>
-          <Checkbox
-            checked={selectedCategories.includes(cat.slug)}
-            onCheckedChange={(checked) =>handleCategoryChange(cat.slug, checked === true)
- }
-          />
-
-          {cat.name}
-        </div>
-      ))}
-</>
-)
-```
