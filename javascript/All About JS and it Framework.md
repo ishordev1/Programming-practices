@@ -115,12 +115,13 @@ set in json file script start:
 # Next Js
 
 ## Hook
-1.  const pathname = usePathname();
+**1.  const pathname = usePathname();**
    - usePathname is a client side component, using this we can access URL path only not parameter.
    - eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
    - output: /test    <- this only
    - 
-2. useSearchParams: It read current URL parameter ? from here. if url have multiple parameter in url,  like, sort, category, etc
+**2. useSearchParams:**
+   - It read current URL parameter ? from here. if url have multiple parameter in url,  like, sort, category, etc
    - we direct access sort or category parameter data
    - eg: ?catNames=boys-clothing%2Ctoys   <- **Only read this**
 
@@ -129,7 +130,7 @@ set in json file script start:
    eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
    const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
    ```
-3. useRouter hook
+**3. useRouter hook**
    -It is client component hook. using this we can navigate in other page
    - const router = useRouter(); 
    -  router.push: Yeh naye URL par Navigate karta hai. (Jaise: Naya link apply kar do).
@@ -142,7 +143,7 @@ set in json file script start:
    router.replace("/");
   ```
 
-5. full example
+**example**
 ```
 export default function Page() {
   const searchParams = useSearchParams();
