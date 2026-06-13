@@ -115,14 +115,20 @@ set in json file script start:
 # Next Js
 
 # Hook
-1. useSearchParams: Yeh current URL ko Read karta hai. (Jaise: URL mein abhi kya filter laga hai?)
+1.  const pathname = usePathname();
+   - usePathname is a client side component, using this we can access URL path only not parameter.
+   - eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
+   - output: /test    <- this only
+   - 
+2. useSearchParams: It read current URL parameter ? from here. if url have multiple parameter in url,  like, sort, category, etc
+   - we direct access sort or category parameter data
+   - eg: ?catNames=boys-clothing%2Ctoys   <- **Only read this**
+
    ```
    const searchParams = useSearchParams();
    eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
    const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
    ```
-
-3. URLSearchParams: Yeh ek helper hai jo naya URL string Likhta/Modify karta hai. (Jaise: Purane filters mein 'Sort' bhi add kar do).
 
 4. router.push: Yeh naye URL par Navigate karta hai. (Jaise: Naya link apply kar do).
    ```
