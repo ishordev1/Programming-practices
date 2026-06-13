@@ -114,7 +114,7 @@ set in json file script start:
 
 # Next Js
 
-# Hook
+## Hook
 1.  const pathname = usePathname();
    - usePathname is a client side component, using this we can access URL path only not parameter.
    - eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
@@ -129,15 +129,21 @@ set in json file script start:
    eg: http://localhost:3000/test?catNames=boys-clothing%2Ctoys
    const initialCategories = searchParams.get("catNames")?.split(",") ?? [];
    ```
+3. useRouter hook
+   -It is client component hook. using this we can navigate in other page
+   - const router = useRouter(); 
+   -  router.push: Yeh naye URL par Navigate karta hai. (Jaise: Naya link apply kar do).
+    - # Replace vs Push
+      - const router = useRouter();
+      - Replace <- //replace not hold back page if go forwared. means user login and user want to go back it is not show singin page
+      - push <- it hold previous like user is go product page and then details page and again come in product page it will show.
+  ```
+   router.push("/")
+   router.replace("/");
+  ```
 
-4. router.push: Yeh naye URL par Navigate karta hai. (Jaise: Naya link apply kar do).
-   ```
-  //put data in browser url
-  const router = useRouter();
-  const pathname = usePathname();
-   ```
 5. full example
-``
+```
 export default function Page() {
   const searchParams = useSearchParams();
 
@@ -296,16 +302,8 @@ const page = () => {
 )
 ```
 
----
-### Replace vs Push
 
-- Replace <- //replace not hold back page if go forwared. means user login and user want to go back it is not show singin page
-- push <- it hold previous like user is go product page and then details page and again come in product page it will show.
-  ```
-  import { router } from 'next/router';
-  router.push("/")
-  router.replace("/");
-  ```
+
 ### React Query (tanstack) setup
 -----------------------
 ```
