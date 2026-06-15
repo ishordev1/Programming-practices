@@ -1,3 +1,5 @@
+# vvi css tailwind
+- gap-2
 # JS concept
 
 
@@ -231,6 +233,9 @@ async function getUserData() {
 
 
 # filter features
+- creating filter in server side in nextjs
+  <img width="1602" height="635" alt="image" src="https://github.com/user-attachments/assets/508cabda-0d81-4d52-bff3-d488f9416776" />
+
 ```
 const categories = [
   {
