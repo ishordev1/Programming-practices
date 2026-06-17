@@ -116,6 +116,10 @@ set in json file script start:
 
 # Next Js
 
+### Get Urlpath and Urlparam in serverside
+<img width="900" height="390" alt="image" src="https://github.com/user-attachments/assets/a03d9f02-ecc8-41c6-9a5b-521f1761b77d" />
+
+
 ## Hook
 **1.  const pathname = usePathname();**
    - usePathname is a client side component, using this we can access URL path only not parameter.
