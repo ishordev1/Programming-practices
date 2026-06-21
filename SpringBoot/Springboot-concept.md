@@ -71,7 +71,7 @@ if not ----> one by one initilize and do operation
 
 
 
-# Spring Data JPA Specification
+# Spring Data JPA Specification (Filter System)
 - It is use to create advance filter method in springboot.
 ## Why need this?
 - if we use simple repository, and try to create 5 or 10 or more column query at an simgle method, Simple JPA Repository become massey code. 
