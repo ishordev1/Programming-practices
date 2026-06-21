@@ -209,6 +209,44 @@ public class ProductSpecification {
 	}
 ```
 
+# Sometime we dont expose data for user like we have Stock and reserveStock for user we show only Available stock we dont have field available in admin side.
+	- Just make create method in entity it does not expose the data. 
+	- user entity add column availableQuantity
+	
+	```
+	  @Transient
+    public Integer getAvailableQuantity() {
+        return quantity - reservedQuantity;
+    }
+	```
+```
+public class Inventory {
+
+    private Integer quantity;
+    private Integer reservedQuantity;
+
+    @Transient
+    public Integer getAvailableQuantity() {
+        return quantity - reservedQuantity;
+    }
+}
+
+public class InventoryUserResponseDto {
+
+    private String id;
+    private Integer availableQuantity;
+}
+```
+
+```
+{
+  "id": "123",
+  "availableQuantity": 15
+}
+```
+
+
+
 
 Case 1: Simple Field
 
