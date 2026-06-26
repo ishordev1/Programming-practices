@@ -1,14 +1,40 @@
 # vvi css tailwind
 - gap-2
 # JS concept
+## Quick Overview
 
+| Method | Returns | Use Case |
+|--------|---------|----------|
+| **`find()`** | Single item (or undefined) | Find **ONE** specific item |
+| **`filter()`** | New array (0 or more items) | Find **ALL** items matching condition |
+| **`map()`** | New array (same length) | Transform **EVERY** item |
 
+## Examples
+
+```javascript
+const users = [
+  { id: 1, name: 'Alice', active: true },
+  { id: 2, name: 'Bob', active: false },
+  { id: 3, name: 'Charlie', active: true }
+];
+
+// find() - Get one user
+const user = users.find(u => u.id === 1);
+// Result: { id: 1, name: 'Alice', active: true }
+
+// filter() - Get all active users
+const activeUsers = users.filter(u => u.active);
+// Result: [{ id: 1, name: 'Alice', ... }, { id: 3, name: 'Charlie', ... }]
+
+// map() - Get all names
+const names = users.map(u => u.name);
+// Result: ['Alice', 'Bob', 'Charlie']
 
 ### map function
 data.map((obj,idx)=>(
 //statement
 ))
-
+```
 -------------------------------------------------------
 TypeScript
 -------------------------------------------------------
