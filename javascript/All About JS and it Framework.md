@@ -342,15 +342,16 @@ const page = () => {
 
 ### React Query (tanstack) setup
 -----------------------
-```
 1. Add or install Tanstack React Query from Tanstack documentation
 2. Wrap QueryClientProvider with the root file, create ReactQueryProvider, and return QueryClientProvider,
- also pass client in queryclientProvider.
+ - also pass client in queryclientProvider.
 
-useQuery ----> Get Request
-useMutation -> Put post Delete Request
-vvi: React Quuery only work in client component
+- useQuery ----> Get Request
+- useMutation -> Put post Delete Request
+- vvi: React Query only work in client component
+  
 
+```
 ex:
  # Create ReactQueryProvider component or provider folder
 "use client";
@@ -382,7 +383,9 @@ return (
 ------------
 i. Get Request
 ------------------
-
+- useQuery object of multiple things and data also
+- deserializing {data:name of object}=useQuery()
+- or fetch and work without deserializing
 
 1. create useQueryClient()
 2. create useQuery  hook in there pass 2 attribute in that object, key & api function. 
