@@ -34,7 +34,7 @@ products.id → products_Id
 - 1. desing Dto same like json, it automatic get data or ignore remaining field
 - - if use dto then use
   - record is new class you can also use simple class
-  ```
+```
 package com.kaivalkids.shiprocket.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -63,10 +63,10 @@ public record CourierCompany(
         
         int cod
 ) {}
-    ```
+```
 
 	- 2. direct but bliend using JsonNode
-	```
+```
 	public void extractImportantData(String orderId) {
     String token = getToken();
 
@@ -92,7 +92,7 @@ public record CourierCompany(
         }
     }
 }
-	```
+```
 
 # Product unlink from bridge table
 
