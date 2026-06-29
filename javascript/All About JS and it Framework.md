@@ -49,6 +49,20 @@ TypeScript
 
 1. open sidebar install in project.
 2. visit in sidebar block component copy and past all component from there
+- if you got error: Uncaught
+  ```
+   Error: `Tooltip` must be used within `TooltipProvider`
+  ```
+- wrap parents full code under tooltipProvider
+```
+import { TooltipProvider } from "@/components/ui/tooltip"
+
+<TooltipProvider>
+//you sidebar  code
+</TooltipProvider>
+  )
+}
+```
 
 
 
