@@ -29,6 +29,71 @@ products.id → products_Id
 # call External api using Restclient
 <img width="1462" height="662" alt="image" src="https://github.com/user-attachments/assets/e3cd59cc-12ae-4072-895b-ff7e34bda632" />
 
+# Data Extract from response
+- we can extract data using 2 or 3 type
+- 1. desing Dto same like json, it automatic get data or ignore remaining field
+- - if use dto then use
+  - record is new class you can also use simple class
+  ```
+package com.kaivalkids.shiprocket.dto;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public record CourierCompany(
+        @JsonProperty("courier_company_id")
+        int id,
+        
+        @JsonProperty("courier_name")
+        String name,
+        
+        double rate,
+        double rating,
+        
+        @JsonProperty("estimated_delivery_days")
+        String estimatedDeliveryDays,
+        
+        @JsonProperty("etd")
+        String estimatedDeliveryDate,
+        
+        @JsonProperty("is_surface")
+        boolean isSurface,
+        
+        int cod
+) {}
+    ```
+
+	- 2. direct but bliend using JsonNode
+	```
+	public void extractImportantData(String orderId) {
+    String token = getToken();
+
+    // 1. Directly JsonNode me response le lo (Koi custom class nahi chahiye)
+    JsonNode response = restClient.get()
+            .uri(shipRocketApiUrl + "/courier/serviceability?order_id=" + orderId)
+            .header("Authorization", "Bearer " + token)
+            .retrieve()
+            .body(JsonNode.class);
+
+    // 2. Direct path se 'available_courier_companies' ki list nikal lo
+    JsonNode couriers = response.path("data").path("available_courier_companies");
+
+    // 3. Loop chalakar jo field chahiye extract kar lo
+    if (couriers.isArray()) {
+        for (JsonNode courier : couriers) {
+            String name = courier.path("courier_name").asText();
+            double rate = courier.path("rate").asDouble();
+            double rating = courier.path("rating").asDouble();
+            String edd = courier.path("estimated_delivery_days").asText();
+
+            System.out.println("Courier: " + name + " | Rate: " + rate + " | Rating: " + rating + " | Days: " + edd);
+        }
+    }
+}
+	```
+
 # Product unlink from bridge table
 
 ```
