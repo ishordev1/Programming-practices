@@ -25,6 +25,10 @@ List<Category> findByProducts_Id(String productId);
 categories.id → categories_Id
 products.id → products_Id
 ```
+
+# call External api using Restclient
+<img width="1462" height="662" alt="image" src="https://github.com/user-attachments/assets/e3cd59cc-12ae-4072-895b-ff7e34bda632" />
+
 # Product unlink from bridge table
 
 ```
@@ -209,7 +213,7 @@ public class ProductSpecification {
 	}
 ```
 
-# Sometime we dont expose data for user like we have Stock and reserveStock for user we show only Available stock we dont have field available in admin side.
+## Sometime we dont expose data for user like we have Stock and reserveStock for user we show only Available stock we dont have field available in admin side.
 	- Just make create method in entity it does not expose the data. 
 	- user entity add column availableQuantity
 	
