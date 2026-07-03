@@ -3,6 +3,10 @@
 - first create policy and thhen add in that user
 - after choose policy which created and select for that user.
 
+<img width="1905" height="932" alt="image" src="https://github.com/user-attachments/assets/66111cd5-6cf0-411d-802a-85390cb5d317" />
+
+## for image upload first generate sign url, and using that send put request, file select in body -> select binary and image (image name can be same name of url name)
+
  # s3 bucket has also setup cors origin 
 - in your bucket -> permission -> cors origin -> edit ->
 - search from googl -> s3 bucket cors origin resource ->  copy from anyother website
