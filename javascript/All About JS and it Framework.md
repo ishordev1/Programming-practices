@@ -72,6 +72,8 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 
 # React Js
 ------------------------------------------------------------------------------------------------------------------
+### Hook
+- Hook alway initilize in top level, because sometime we get error, some function are mix match then.
 ### Function and CallBack function
 - When you directly put a function in the div, that means call it when the page is rendered (open first time) directly.
   ```
