@@ -507,7 +507,12 @@ export type UpdateProductDetailsInput = z.infer<typeof UpdateProductDetailsSchem
    - it also have feature to convert direct schema into interface so not need to create interface direct convert
 
 
-
+# Reset
+-  it has 2 work one set or clear data from state, if you pass data it will set data in that form or if not pass it clear data.
+- reset()
+- reset(product)
+```
+```
 
 
 
