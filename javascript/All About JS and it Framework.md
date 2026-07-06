@@ -470,8 +470,10 @@ const methods=useForm<Product>()
 ```
 
 
-### Zod validation
+## Zod validation
 - it is use to validate input fields with a custom method and check in frontend without hitting the backend request.
+
+### 1. Omit function
 - omit() function to create new schema from old schema by skiping some field.
 
 ```
@@ -479,7 +481,25 @@ const methods=useForm<Product>()
 export const UpdateProductDetailsSchema = ProductSchema.omit({
   productAttributes: true,
 });
+
+export type UpdateProductDetailsInput = z.infer<typeof UpdateProductDetailsSchema>;
 ```
+### 2. Pick() function
+- this function only pick select field from old schema and create new schema
+  ```
+  export const UpdateProductDetailsSchema = ProductSchema.pick({
+  name: true,
+  description: true,
+  gender: true,
+  categoryId: true,
+  subcategoryId: true,
+  gstType: true,
+  gstPercentage: true,
+  // Jo jo fields step 1 me chahiye unhe yahan add karein
+});
+
+export type UpdateProductDetailsInput = z.infer<typeof UpdateProductDetailsSchema>;
+  ```
 ---------
 1. install zod and Resolver, it found in schema section in react hook form docs.
    - npm install @hookform/resolvers yup
