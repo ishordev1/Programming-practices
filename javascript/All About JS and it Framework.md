@@ -734,6 +734,7 @@ isDragActive ?
 
 
 # Multi Stepper Form
+- Just use && to show only that section, and 2 handler, one for increament or a section handler and 
 ```
 const ProductStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
