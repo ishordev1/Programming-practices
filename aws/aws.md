@@ -56,3 +56,9 @@
     }
 ]
 ```
+
+
+# Creating Database search Aurora and RDS   ----> here you choose any database, like sql, postgresql etc
+- bydefault all are private and secure
+- for location connection  make it public and it inbound and outbound make public
+- 
