@@ -17,6 +17,13 @@ eg: margin: 2px,auto;
  position:absolute;<-- this is not reserved space
  position:relative;<-- this is reserved space
 
+# image responsive
+- aspect ratio <-----(parents) it can set div according to parents screen
+- object-contain <--- (img) it can show org img but with size.
+
+
+
+
 In flex box
 justify-content  
 align-item  
