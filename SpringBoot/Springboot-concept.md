@@ -146,6 +146,8 @@ if not ----> one by one initilize and do operation
 - eg: product-> variant-> inventory ------------------Data fetch from product, variant inventory----------
   	- it return one class not ProudctDto not data in varinat & inventory
   	- means child is blank
+- Also in JPA inside query we can't perform any arthematic operation
+-  
 - 
 - It is use to create advance filter method in springboot.
 ## Why need this?
