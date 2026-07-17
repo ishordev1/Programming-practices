@@ -141,6 +141,12 @@ if not ----> one by one initilize and do operation
 
 
 # Spring Data JPA Specification (Filter System)
+## JPA Query
+- it fetch data with different entity but return on single dto, not nested dto
+- eg: product-> variant-> inventory ------------------Data fetch from product, variant inventory----------
+  	- it return one class not ProudctDto not data in varinat & inventory
+  	- means child is blank
+- 
 - It is use to create advance filter method in springboot.
 ## Why need this?
 - if we use simple repository, and try to create 5 or 10 or more column query at an simgle method, Simple JPA Repository become massey code. 
