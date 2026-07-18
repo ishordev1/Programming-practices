@@ -2,6 +2,18 @@
 
 Summary of key Spring modules, architectures, and database relationship handling.
 
+# Spring JPA concept
+## JPA Query
+- it fetch data with different entity but return on single dto, not nested dto
+- eg: product-> variant-> inventory ------------------Data fetch from product, variant inventory----------
+  	- it return one class not ProudctDto not data in varinat & inventory
+  	- means child is blank
+- Also in JPA inside query we can't perform any arthematic operation
+
+Note: 
+- use proper packageName + Class Name for create new object in jpa query manually.
+- SpringDataJPA Query use constructor so need to present constructor in that class, so manually create constructor for that. 
+- Lombok not work.
 ---
 
 ## 🍃 Spring Framework Core Concepts
