@@ -12,6 +12,7 @@ Summary of key Spring modules, architectures, and database relationship handling
 
 Note: 
 - use proper packageName + Class Name for create new object in jpa query manually.
+- also need same sequence of dto and in query variable name 
 - SpringDataJPA Query use constructor so need to present constructor in that class, so manually create constructor for that. 
 - Lombok not work.
 ---
