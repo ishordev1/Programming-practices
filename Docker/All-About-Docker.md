@@ -1,4 +1,6 @@
 # First check you jar file run in local system
+- .\mvnw clean package -DskipTests  <-- this command build jar without  run in when build jar,  skip run because some time env file not found in local
+
 <img width="1017" height="581" alt="image" src="https://github.com/user-attachments/assets/9ceebcb8-f3d9-45ee-b600-e70f703d111d" />
 
 
