@@ -109,5 +109,7 @@ volumes:
 3. docker ps             <------- check
 4. docker compose logs -f backend     <- check logs
 
+<img width="882" height="217" alt="image" src="https://github.com/user-attachments/assets/1e4b85a0-df6b-4c76-bac1-1f9fd9f24f55" />
+
 
 
