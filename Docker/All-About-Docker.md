@@ -6,6 +6,9 @@
 
 # Docker
 - Dockerfile -> compile and build  it become -> Docker Image -> run image it become -> Docker Container
+# Dockerfile, Docker Compose
+- DockerCompose<- If we have multiple Dockerfile we need docker compose to manage it.
+
   
 - enable hypervisor plateform -> search--> turn on window feature
 1. check window window hypervisor plateform and also
