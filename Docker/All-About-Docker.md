@@ -18,8 +18,9 @@
 ### Check Docker is install or not open cmd
 - docker -v      <------------ check version
 
-## First create folder and use that folder for practice of that  docker
-- after also java image create copy that image and bring that file in that folder for run
+- Note: After create docker image you dont see that using file explorer, only see using docker gui or command,
+- to see that file open cmd anywhere run --->  docker images
+
   
 ## Docker command open cmd and use docker or gui
 - it download docker image from docker hub and give response
