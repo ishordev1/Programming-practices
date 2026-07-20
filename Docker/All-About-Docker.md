@@ -36,7 +36,7 @@
 <img width="680" height="85" alt="image" src="https://github.com/user-attachments/assets/fba05b40-d54a-4681-b053-dea8613735e6" />
 
 ## some docker command
-<img width="1536" height="1024" alt="ChatGPT Image Jul 20, 2026, 08_48_39 AM" src="https://github.com/user-attachments/assets/4c45875d-319d-4320-b5cd-0a6dea0d8f78" />
+<img width="1536" height="1024" alt="ChatGPT Image Jul 20, 2026, 10_11_57 AM" src="https://github.com/user-attachments/assets/3dac002c-31e8-4340-8824-3c6e96f7c332" />
 
 ## prepare for springboot file
 <img width="1024" height="1536" alt="ChatGPT Image Jul 20, 2026, 08_55_29 AM" src="https://github.com/user-attachments/assets/f433b89f-4b63-4505-8bad-8b34cb6a94e2" />
