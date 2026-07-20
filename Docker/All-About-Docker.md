@@ -1,3 +1,7 @@
+# First check you jar file run in local system
+<img width="1017" height="581" alt="image" src="https://github.com/user-attachments/assets/9ceebcb8-f3d9-45ee-b600-e70f703d111d" />
+
+
 # Docker
 - Dockerfile -> compile and build  it become -> Docker Image -> run image it become -> Docker Container
   
@@ -33,6 +37,8 @@
 
 ## prepare for springboot file
 <img width="1024" height="1536" alt="ChatGPT Image Jul 20, 2026, 08_55_29 AM" src="https://github.com/user-attachments/assets/f433b89f-4b63-4505-8bad-8b34cb6a94e2" />
+
+
 
 
 
