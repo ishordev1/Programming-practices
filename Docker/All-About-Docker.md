@@ -1,4 +1,4 @@
-# First check you jar file run in local system
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/28afb743-927e-4321-a737-0780dd25a2ec" /># First check you jar file run in local system
 - .\mvnw clean package -DskipTests  <-- this command build jar without  run in when build jar,  skip run because some time env file not found in local
 
 <img width="1017" height="581" alt="image" src="https://github.com/user-attachments/assets/9ceebcb8-f3d9-45ee-b600-e70f703d111d" />
@@ -22,6 +22,18 @@
 
 - Note: After create docker image you dont see that using file explorer, only see using docker gui or command,
 - to see that file open cmd anywhere run --->  docker images
+
+--------------------------
+# IN Short
+- docker images     <-------- to check image
+- docker build -t myapp  <- Docker file to image "myapp" <-- put any name you want to make your image
+- docker run myapp      <--------this run that image 
+- docker rm -f myapp     <---- force remove that image
+
+
+-------------------------
+
+
 
   
 ## Docker command open cmd and use docker or gui
