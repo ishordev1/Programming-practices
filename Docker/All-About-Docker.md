@@ -31,7 +31,8 @@
 - docker images     <-------- to check image
 - docker build -t myapp . <- Docker file to image "myapp" <-- put any name you want to make your image
 - docker run myapp      <--------this run that image 
-- docker rm -f myapp     <---- force remove that image
+- docker rm -f myapp     <---- force remove container
+- - docker rmi -f myapp     <---- force remove that image
 
 
 -------------------------
