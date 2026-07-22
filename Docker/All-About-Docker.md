@@ -60,7 +60,21 @@
 
 
 # Springboot Deployment
+
 <img width="1451" height="1083" alt="image" src="https://github.com/user-attachments/assets/1755a9dd-895e-4fe3-ac18-cab9c9524674" />
+
+# how to connect cloud computer with local
+- download github
+- use this commant
+  ```
+   ssh -i kaivalkids-server.pem ec2-user@13.204.83.163
+  ```
+- kaivalkids-server.pem <- thsi is ssh-key-file-name-with-extension
+- ec2-user@    <- this is ec2 user name alway same
+- 13.204.83.163 <- this is server(ec2) public id copy from server
+
+<img width="1362" height="715" alt="image" src="https://github.com/user-attachments/assets/e7ec8866-4f41-4304-b354-88768f053e4b" />
+
 
 # build ci/cd pipline
 - github have multiple action in marketplace use to that action for building ci/cd code.
