@@ -62,8 +62,74 @@
 # Springboot Deployment
 <img width="1451" height="1083" alt="image" src="https://github.com/user-attachments/assets/1755a9dd-895e-4fe3-ac18-cab9c9524674" />
 
+# build ci/cd pipline
+- github have multiple action in marketplace use to that action for building ci/cd code.
 
+### Workflow Steps
 
+1. Checkout code
+2. Setup Java
+3. Build a jar
+4. Login dockerhub
+5. Build image
+6. push image
+7. Deploy to ec2 using SSH
+
+```
+name: Java CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Setup Java
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    # 3. Build a jar
+    - name: Build a jar
+      run: ./gradlew build # or `mvn clean package`
+
+    # 4. Login dockerhub
+    - name: Login dockerhub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    # 5. Build image & 6. Push image
+    - name: Build and push image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
+
+    # 7. Deploy to ec2 using SSH
+    - name: Deploy to ec2 using SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
+          docker stop my-app || true
+          docker rm my-app || true
+          docker run -d --name my-app -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
+```
 
 
 
