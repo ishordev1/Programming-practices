@@ -36,8 +36,15 @@
 - docker rm -f myapp     <---- force remove container
 - docker rmi -f myapp     <---- force remove that image
 
+----------------------------------------
+## push image in docker hub
+- docker login              <- this for login docker if not
+- docker tag yourImageFullName your-dockerhub-username/againYourImageFullName             <- this make tag of docker
+- docker push your-dockerhub-username/againYourImageFullName                        <- push in docker hub
 
+- docker pull againYourImageFullName                  <--- this pull docker image
 -------------------------
+
 
 
 
