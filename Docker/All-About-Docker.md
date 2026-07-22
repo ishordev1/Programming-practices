@@ -52,7 +52,8 @@ docker run -d \
   -p 8080:8080 \
   ishor1/myapp:latest
 ```
-
+- docker ps                 <- check container is running or not
+- docker logs -f kaivalkids-backend             <- this show your logs kaivalkids-backend  running container name
 
 
 
