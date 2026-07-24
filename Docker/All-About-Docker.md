@@ -55,6 +55,19 @@ docker run -d \
 - docker ps                 <- check container is running or not
 - docker logs -f kaivalkids-backend             <- this show your logs kaivalkids-backend  running container name
 
+1. Go to the directory containing the .env file
+-  cd ~/personal
+-  ls -la              <-------- this command show hiddend or .env file in server
+
+2. View the contents of the .env file
+- cat .env
+3. edit / update .env file
+- nano .env
+ <img width="762" height="890" alt="image" src="https://github.com/user-attachments/assets/f7564cd1-4d31-4e42-b70d-d92a2dd437b8" />
+
+     
+
+
 
 
   
