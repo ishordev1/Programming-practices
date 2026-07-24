@@ -182,4 +182,19 @@ jobs:
 
 
 
+# if server and domain are not mix then we get mix error, like this
+<img width="1841" height="67" alt="image" src="https://github.com/user-attachments/assets/9cee5024-ef82-45cf-96ed-70a52b3d0d3a" />
+
+- for this add dns in domain in server.
+
+
+
+
+
+
+
+
+
+
+
 
