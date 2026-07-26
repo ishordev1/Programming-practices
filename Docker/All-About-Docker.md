@@ -46,11 +46,7 @@
 - make folder and that folder make one .env file and put all your crediential
 - in that folder run this command to run the the image
 ```
-docker run -d \
-  --name kaivalkids-backend \
-  --env-file .env \
-  -p 8080:8080 \
-  ishor1/myapp:latest
+docker run -d --name kaivalkids-backend --env-file .env -p 8080:8080 ishor1/myapp:latest
 ```
 - docker ps                 <- check container is running or not
 - docker logs -f kaivalkids-backend             <- this show your logs kaivalkids-backend  running container name
