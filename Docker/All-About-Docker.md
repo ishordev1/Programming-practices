@@ -184,6 +184,7 @@ jobs:
 
 - for this add dns in domain in server.
 
+<img width="1181" height="1331" alt="ChatGPT Image Jul 26, 2026, 06_57_46 PM" src="https://github.com/user-attachments/assets/993f5a30-5062-43ca-8d34-faf15811292b" />
 
 
 
