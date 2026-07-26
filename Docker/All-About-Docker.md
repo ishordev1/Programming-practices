@@ -32,6 +32,7 @@
 - docker build -t myapp . <- Docker file to image "myapp" <-- put any name you want to make your image
 - docker run myapp      <--------this run that image
 - docker ps       <-  it show running container
+- docker ps -a
 - docker stop dockerId    <- this stop running container
 - docker rm -f myapp     <---- force remove container
 - docker rmi -f myapp     <---- force remove that image
