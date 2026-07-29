@@ -1,3 +1,13 @@
+# Connect with EC2 Server
+- open folder where  you save key and open terminal in that folder
+- type command : ssh -i key-file-Name server-user-name@public-ip
+  ```
+  ssh -i kaivalkids-ec2.pem ec2-user@13.235.81.213
+  ```
+  - Note: user name is alway same for all linux server
+    <img width="706" height="267" alt="image" src="https://github.com/user-attachments/assets/69fa437d-f0de-4a39-a54c-4089b2353c29" />
+ 
+
 # create user
 - go in iam -> iam user
 - first create policy and thhen add in that user
