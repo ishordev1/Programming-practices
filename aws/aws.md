@@ -137,8 +137,13 @@ server {
     }
 }
 ```
+- save file: ctrl + 0 and enter
+- ctrl + x and enter
+- After save check it is correct or not
+<img width="740" height="107" alt="image" src="https://github.com/user-attachments/assets/529d268e-2c71-4202-bdc1-baede08257ad" />
 
-
+- reload nginx: sudo systemctl reload nginx
+- check status: sudo systemctl status nginx
 
 
 
