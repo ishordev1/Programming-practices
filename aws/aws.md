@@ -95,30 +95,56 @@ SPRING_PROFILES_ACTIVE=prod
 # Now To Setup Domain with this public ip
 - open your domain provider
 - add there DNS Record which point you EC2 public IP. and wait 10 to 15 min.
-<img width="1090" height="113" alt="image" src="https://github.com/user-attachments/assets/fb78a4af-d3d0-4433-bd88-4ff1367b8ef8" />
+<img width="1091" height="62" alt="image" src="https://github.com/user-attachments/assets/165ac89a-dc44-4239-8ef1-5e5d1f2a8a24" />
+- Note: put ttl default what server provide
 
 - check domain is point in your EC2 or not using this command
 - nslookup kaivalkids.com
 - also check in local cmd that above command, sometime in local it take time to clear cache of that DNS.
 
 
+### Setup Nginx for port forwarding in your local 8080 to your Domain
+- Install Nginx in ec2      -> sudo dnf install nginx -y
+- start Nginx 
+```
+sudo systemctl enable nginx
+sudo systemctl start nginx
+```
+- Check the status:    sudo systemctl status nginx
+- It should show: Active: active (running)
+- now we search our ec2 ip in browser then it  will show welcom to nginx  page, this means our nginx running
+
+- sudo nano /etc/nginx/nginx.conf
+- after open that file and replace this in place of server
+- search this:
+<img width="587" height="302" alt="image" src="https://github.com/user-attachments/assets/8aefa9c7-c2a0-47e0-acc5-afa1e7e810e0" />
+
+replace this:
+```
+server {
+    listen 80;
+    server_name api.kaivalkids.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+ <br><br><br><br>
+---
 # create user
 - go in iam -> iam user
 - first create policy and thhen add in that user
