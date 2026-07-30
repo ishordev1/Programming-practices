@@ -85,10 +85,10 @@ SPRING_PROFILES_ACTIVE=prod
 <img width="705" height="312" alt="image" src="https://github.com/user-attachments/assets/530989c9-0d9f-412d-8d60-904ab2794760" />
 
 
-# After deploy, also allow port 8080 in inbound in ec2, because springboot running 8080 port
+###  After deploy, also allow port 8080 in inbound in ec2, because springboot running 8080 port
 <img width="1648" height="342" alt="image" src="https://github.com/user-attachments/assets/2a0cfc16-86b4-48db-b009-9dcc067f5e9b" />
 
-# For Accessing server use server public address and port
+### For Accessing server use server public address and port
 - http://13.235.81.213:8080
 
 
