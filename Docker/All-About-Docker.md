@@ -1,3 +1,6 @@
+# Setup Docker in EC2 server for run docker project
+<img width="1024" height="1536" alt="ChatGPT Image Jul 30, 2026, 09_28_49 AM" src="https://github.com/user-attachments/assets/6d0803b7-08bd-42ef-adaa-94c45fe210d9" />
+
 # First check you jar file run in local system
 - .\mvnw clean package -DskipTests  <-- this command build jar without  run in when build jar,  skip run because some time env file not found in local
 
