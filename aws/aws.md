@@ -7,7 +7,7 @@
 - Note: the username is always same for all amazon linux server
     <img width="706" height="267" alt="image" src="https://github.com/user-attachments/assets/69fa437d-f0de-4a39-a54c-4089b2353c29" />
  
- # Setup Docker in EC2 server for run docker project
+ # Setup New EC2 server for run docker project
  - Note: if already have docker image there all things already build-in, direct setup docker and  run project
  - After Create Ec2 run this process for setup
 1. Step 1: Connect to your EC2
