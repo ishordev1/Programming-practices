@@ -97,7 +97,9 @@ SPRING_PROFILES_ACTIVE=prod
 - add there DNS Record which point you EC2 public IP. and wait 10 to 15 min.
 <img width="1090" height="113" alt="image" src="https://github.com/user-attachments/assets/fb78a4af-d3d0-4433-bd88-4ff1367b8ef8" />
 
-
+- check domain is point in your EC2 or not using this command
+- nslookup kaivalkids.com
+- also check in local cmd that above command, sometime in local it take time to clear cache of that DNS.
 
 
 
