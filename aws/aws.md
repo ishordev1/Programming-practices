@@ -4,9 +4,84 @@
   ```
   ssh -i kaivalkids-ec2.pem ec2-user@13.235.81.213
   ```
-  - Note: user name is alway same for all linux server
+- Note: the username is always same for all amazon linux server
     <img width="706" height="267" alt="image" src="https://github.com/user-attachments/assets/69fa437d-f0de-4a39-a54c-4089b2353c29" />
  
+ # Setup Docker in EC2 server for run docker project
+ - Note: if already have docker image there all things already build-in, direct setup docker and  run project
+ - After Create Ec2 run this process for setup
+1. Step 1: Connect to your EC2
+- open folder wehre your server key are store and run terminal or git shell
+```
+ssh -i your-key.pem ec2-user@YOUR_EC2_PUBLIC_IP
+```
+2. Step 2: Update the server
+```
+sudo dnf update -y
+```
+3. Step 3: Install Docker
+```
+sudo dnf install docker -y
+```
+- Check Docker:
+  ```
+  docker --version
+  ```
+4. Step 4: Start Docker
+```
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+- check status
+```
+  sudo systemctl status docker
+```
+-  It should show active (running).
+
+5. Step 5: Allow ec2-user to use Docker
+```
+   sudo usermod -aG docker ec2-user
+```
+```
+   exit
+```
+- Reconnect to the server: --> ssh -i your-key.pem ec2-user@YOUR_EC2_PUBLIC_IP
+- or rebot using this command: sudo reboot
+
+6. Step 6: Test Docker
+
+```
+docker ps
+```
+- If it works without sudo, you're done.
+
+7. Step 7: Create the folder for your .env
+```
+mkdir -p /home/ec2-user/personal
+```
+
+8. Step 8: Create the .env file
+```
+nano /home/ec2-user/personal/.env
+```
+- Paste all your environment variables, for example
+```
+DB_URL=...
+DB_USERNAME=...
+DB_PASSWORD=...
+
+JWT_SECRET=...
+
+AWS_ACCESS_KEY=...
+AWS_SECRET_KEY=...
+
+SPRING_PROFILES_ACTIVE=prod
+```
+- save ctrl + o and enter
+-  ctrl + x and enter
+
+![Uploading ChatGPT Image Jul 30, 2026, 09_28_49 AM.png…]()
+
 
 # create user
 - go in iam -> iam user
