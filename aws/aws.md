@@ -92,6 +92,31 @@ SPRING_PROFILES_ACTIVE=prod
 - http://13.235.81.213:8080
 
 
+# Now To Setup Domain with this public ip
+- open your domain provider
+- add there DNS Record which point you EC2 public IP. and wait 10 to 15 min.
+<img width="1090" height="113" alt="image" src="https://github.com/user-attachments/assets/fb78a4af-d3d0-4433-bd88-4ff1367b8ef8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # create user
 - go in iam -> iam user
 - first create policy and thhen add in that user
