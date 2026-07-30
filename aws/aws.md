@@ -83,6 +83,11 @@ SPRING_PROFILES_ACTIVE=prod
 ![Uploading ChatGPT Image Jul 30, 2026, 09_28_49 AM.png…]()
 
 
+# After deploy, also allow port 8080 in inbound in ec2, because springboot running 8080 port
+<img width="1648" height="342" alt="image" src="https://github.com/user-attachments/assets/2a0cfc16-86b4-48db-b009-9dcc067f5e9b" />
+
+
+
 # create user
 - go in iam -> iam user
 - first create policy and thhen add in that user
