@@ -185,6 +185,7 @@ jobs:
 <img width="1841" height="67" alt="image" src="https://github.com/user-attachments/assets/9cee5024-ef82-45cf-96ed-70a52b3d0d3a" />
 
 - for this add dns in domain in server.
+- .kaivalkids.com
 
 <img width="1181" height="1331" alt="ChatGPT Image Jul 26, 2026, 06_57_46 PM" src="https://github.com/user-attachments/assets/993f5a30-5062-43ca-8d34-faf15811292b" />
 
