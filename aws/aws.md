@@ -137,6 +137,7 @@ server {
     }
 }
 ```
+- Note: instant of ip 127.0.0.1 you can also add localhost: because this ip is also localhost ip.
 - save file: ctrl + 0 and enter
 - ctrl + x and enter
 - After save check it is correct or not
@@ -145,8 +146,20 @@ server {
 - reload nginx: sudo systemctl reload nginx
 - check status: sudo systemctl status nginx
 
-
-
+- now your server response in that domain (not use Https): http://api.kaivalkids.com
+---
+### Now install SSL for secure domain
+- Step 1: Install Certbot
+```
+sudo dnf install certbot python3-certbot-nginx -y
+```
+- Step 2: Generate the SSL certificate
+```
+sudo certbot --nginx -d api.kaivalkids.com
+```
+- enter email where you want to get notification when ssl expire or any error happen
+- enter yes 2 3 place
+- 
 
  <br><br><br><br>
 ---
