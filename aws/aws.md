@@ -80,7 +80,9 @@ SPRING_PROFILES_ACTIVE=prod
 - save ctrl + o and enter
 -  ctrl + x and enter
 
-![Uploading ChatGPT Image Jul 30, 2026, 09_28_49 AM.png…]()
+9. Step 9: Configure the Security Group
+- add inbound port 8080
+<img width="705" height="312" alt="image" src="https://github.com/user-attachments/assets/530989c9-0d9f-412d-8d60-904ab2794760" />
 
 
 # After deploy, also allow port 8080 in inbound in ec2, because springboot running 8080 port
