@@ -1,10 +1,36 @@
 # Comfy UI Basic to advance notes
 
 - ctrl+B -----------------> bypass node
-### Node Details:
+## Node Details:
 - Load Image in node  -----> Load Image
 - crop image --------> image crop
 - save output ------> save Image
 - for writing notes------------> note
+- Only view image not save in file ----------> preview Image
+  
+### 1. load checkpoint
+- It is use for modal load
 
+### 2. modal alway get 2 Input for prompt understanding
+1. For Positive prompt
+2. For negative prompt
 
+- that two input use same node for prompt give------------> clip text encode (prompt)
+- do color for visual positive negative only
+
+### 3. Empty Latent Image
+- this node use to give size width and height
+
+### 4. KSampler
+- this is actual work/operation perform
+- Actual it is deside how much time, how output want all manage from here
+  
+1. seed <---- this is use to get consist output or random
+2. 
+
+### 5. VAE Decode
+- Here all things come and it give final shape after all things come.
+- allthings made and come, it give only shape here. Means presentation state
+
+### 6. save Image 
+- now here save node 
