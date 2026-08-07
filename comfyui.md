@@ -33,4 +33,12 @@
 - allthings made and come, it give only shape here. Means presentation state
 
 ### 6. save Image 
-- now here save node 
+- now here save node
+
+
+
+
+
+ # Pinggy
+ - it is a bridge tunnel where expose local ip in internet, so after expose any user can access that application in the internet.
+ - when comfy ui install in colab, it can only run in colab means colab is local virtual mechine, so we expose it ip in internet and direct access that ip with other browser or anyother device.
