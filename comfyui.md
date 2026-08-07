@@ -35,8 +35,14 @@
 ### 6. save Image 
 - now here save node
 
-
-
+# run in colab
+- !git clone repo  link
+- ls   or !pwd   or %cd /content/ComfyUI
+- %cd ComfyUi
+- !pip install -r requirements.txt
+- !python main.py --listen --enable-cors-header                         <------here also enable cross origin
+- copy url and open pinggy past url and from pinggy copy and in colab  past in terminal, hit enter type yes
+-  
 
 
  # Pinggy
